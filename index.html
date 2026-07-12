@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harvest — Private Kitchen Garden Systems</title>
+  <meta name="description" content="White-glove design, installation, and weekly maintenance. Sensor-driven automation. A harvest app that makes growing feel like a ritual, not a chore." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- =====================================================
+       NAV (over hero)
+       ===================================================== -->
+  <header role="banner">
+    <nav class="site-nav" aria-label="Main navigation">
+      <div class="nav-inner">
+
+        <!-- Logo -->
+        <a href="/" class="nav-logo" aria-label="Harvest — home">
+          <!-- Wordmark — single token, swap brand name here -->
+          <span class="nav-wordmark">harvest</span>
+        </a>
+
+        <!-- Center nav links -->
+        <ul class="nav-links" role="list">
+          <li><a href="#how-it-works">HOW IT WORKS</a></li>
+          <li><a href="#tiers">SYSTEMS</a></li>
+          <li><a href="#app">THE APP</a></li>
+          <li><a href="#yield">YIELD</a></li>
+        </ul>
+
+        <!-- Nav CTA + hamburger -->
+        <a href="#contact" class="btn nav-cta">Request a design</a>
+        <button class="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links-mobile">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+    <section class="hero" aria-labelledby="hero-h1">
+
+      <!-- Background — video-ready container; swap <img> for <video> when asset is available -->
+      <div class="hero-bg" aria-hidden="true">
+        <img
+          src="assets/hero-bg.jpg"
+          alt=""
+          width="1920"
+          height="1080"
+          fetchpriority="high"
+          decoding="async"
+        />
+        <!-- Future video swap:
+        <video autoplay muted loop playsinline poster="assets/hero-bg.jpg">
+          <source src="assets/hero-bg.mp4" type="video/mp4" />
+        </video>
+        -->
+      </div>
+      <div class="hero-scrim" aria-hidden="true"></div>
+
+      <!-- Eyebrow — pinned top-center -->
+      <div class="hero-eyebrow" aria-label="Private Kitchen Garden Systems">
+        Private Kitchen Garden Systems
+      </div>
+
+      <!-- Heading + sub — vertically centered -->
+      <div class="hero-content">
+        <h1 class="hero-h1" id="hero-h1">
+          Your backyard,<br>
+          <span class="accent">engineered</span> to feed you.
+        </h1>
+        <p class="hero-sub">
+          White-glove design, installation, and weekly maintenance. Sensor-driven automation. A harvest app that makes growing feel like a ritual, not a chore.
+        </p>
+      </div>
+
+      <!-- ZIP pill — pinned bottom-center -->
+      <div class="hero-bottom">
+        <div class="hero-zip-wrap">
+          <form class="hero-zip-pill" id="hero-zip-form" role="search" aria-label="Check service area by ZIP code" novalidate>
+            <span class="sparkle" aria-hidden="true">✦</span>
+            <label for="hero-zip-input" class="sr-only">Enter your ZIP code</label>
+            <input
+              id="hero-zip-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="5"
+              pattern="\d{5}"
+              placeholder="Enter your ZIP to get started"
+              autocomplete="postal-code"
+              aria-describedby="hero-zip-result"
+            />
+            <button type="submit" class="zip-text-btn">Check</button>
+          </form>
+          <div id="hero-zip-result" class="hero-zip-result" role="status" aria-live="polite"></div>
+          <p class="hero-service-note">Currently serving the greater Austin metro area</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- =====================================================
+         MARQUEE STRIP
+         ===================================================== -->
+    <div class="marquee-section" aria-label="Service highlights" role="region">
+      <div class="marquee-track-wrap" aria-hidden="true">
+        <ul class="marquee-track" role="list">
+          <li class="marquee-item">Chemical-free inputs</li>
+          <li class="marquee-item">Sensor-driven irrigation</li>
+          <li class="marquee-item">Weekly white-glove maintenance</li>
+          <li class="marquee-item">Same-day harvest freshness</li>
+          <li class="marquee-item">Year-round production</li>
+          <li class="marquee-item">400+ lbs per bed annually</li>
+          <li class="marquee-item">Gamified harvest tracking</li>
+          <li class="marquee-item">Cedar, steel, or composite beds</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- =====================================================
+         STATS STRIP
+         ===================================================== -->
+    <section class="stats-section" aria-label="Key numbers">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item fade-up">
+            <div class="stat-number">400+</div>
+            <div class="stat-label">LBS/YEAR PER BED</div>
+          </div>
+          <div class="stat-item fade-up">
+            <div class="stat-number">1—2</div>
+            <div class="stat-label">HRS/WEEK YOUR TIME</div>
+          </div>
+          <div class="stat-item fade-up">
+            <div class="stat-number">0</div>
+            <div class="stat-label">SYNTHETIC INPUTS</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         THE DIFFERENCE
+         ===================================================== -->
+    <section class="difference-section" id="difference" aria-labelledby="difference-h2">
+      <div class="container">
+        <div class="difference-top fade-up">
+          <span class="eyebrow">Why Harvest at Home</span>
+          <h2 class="section-h2" id="difference-h2">Not gardening. Food infrastructure.</h2>
+          <p class="section-body">"Organic" produce still uses approved pesticides, travels days from field to table, and was never grown under conditions you control. We build an alternative.</p>
+        </div>
+
+        <div class="difference-grid">
+          <!-- Store Organic card -->
+          <article class="comp-card store fade-up" aria-label="Store Organic comparison">
+            <span class="comp-badge">Unknown inputs</span>
+            <h3 class="comp-card-title">Store Organic</h3>
+            <ul class="comp-list" role="list">
+              <li><span class="icon" aria-hidden="true">✗</span>Approved pesticides still used</li>
+              <li><span class="icon" aria-hidden="true">✗</span>Multi-step supply chain handling</li>
+              <li><span class="icon" aria-hidden="true">✗</span>Days-to-weeks old at purchase</li>
+              <li><span class="icon" aria-hidden="true">✗</span>Label-based transparency only</li>
+              <li><span class="icon" aria-hidden="true">✗</span>Nutrient density lost in transit</li>
+            </ul>
+          </article>
+
+          <!-- Harvest at Home card -->
+          <article class="comp-card harvest fade-up" aria-label="Harvest at Home system comparison">
+            <span class="comp-badge">Full control</span>
+            <h3 class="comp-card-title">Harvest at Home System</h3>
+            <ul class="comp-list" role="list">
+              <li><span class="icon" aria-hidden="true">✓</span>Zero synthetic inputs, ever</li>
+              <li><span class="icon" aria-hidden="true">✓</span>From bed to kitchen, same day</li>
+              <li><span class="icon" aria-hidden="true">✓</span>Harvested at peak ripeness</li>
+              <li><span class="icon" aria-hidden="true">✓</span>Every variable you can see and track</li>
+              <li><span class="icon" aria-hidden="true">✓</span>Engineered for maximum nutrient density</li>
+            </ul>
+          </article>
+
+          <!-- Right column -->
+          <div class="difference-right fade-up">
+            <div>
+              <h3 class="difference-h3">Every variable, <em>defined and measured.</em></h3>
+              <p class="difference-right-body">We rebuild your soil from scratch, engineer precision drip zones, and install sensors that monitor moisture, temperature, and nutrient levels in real time.</p>
+            </div>
+            <div class="system-features" data-stagger>
+              <div class="system-feature">
+                <div class="system-feature-label">01 — Rebuilt soil, contamination-free</div>
+                <div class="system-feature-body">Compost-dominant, biologically active blend with no legacy chemicals. Your foundation is clean before the first seed.</div>
+              </div>
+              <div class="system-feature">
+                <div class="system-feature-label">02 — Precision drip irrigation</div>
+                <div class="system-feature-body">Pressure-regulated, zoned delivery. No overwatering. No dry patches. Timed to your micro-climate.</div>
+              </div>
+              <div class="system-feature">
+                <div class="system-feature-label">03 — Sensor-closed-loop automation</div>
+                <div class="system-feature-body">Moisture and temperature sensors feed a smart controller. The system adjusts before you even notice a change.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         HOW IT WORKS
+         ===================================================== -->
+    <section class="hiw-section" id="how-it-works" aria-labelledby="hiw-h2">
+      <div class="container">
+        <div class="hiw-header fade-up">
+          <span class="eyebrow">Process</span>
+          <h2 class="section-h2" id="hiw-h2">From consultation to first harvest.</h2>
+          <p class="section-body">Six steps. Typically four to six weeks from initial visit to your first plate.</p>
+        </div>
+
+        <div class="hiw-steps" data-stagger>
+
+          <div class="hiw-step fade-up">
+            <div class="hiw-step-img">
+              <div class="fpo-img" style="padding-bottom: 62%;" role="img" aria-label="FPO: site walk and analysis">
+                <span class="fpo-tag">FPO · site analysis walk</span>
+              </div>
+            </div>
+            <div class="hiw-step-num">01</div>
+            <h3 class="hiw-step-title">Site Analysis</h3>
+            <p class="hiw-step-body">We assess sun exposure, water access, soil conditions, and available footprint. Full layout recommendation included.</p>
+          </div>
+
+          <div class="hiw-step fade-up">
+            <div class="hiw-step-img">
+              <div class="fpo-img" style="padding-bottom: 62%;" role="img" aria-label="FPO: blueprint and system design">
+                <span class="fpo-tag">FPO · blueprint/design</span>
+              </div>
+            </div>
+            <div class="hiw-step-num">02</div>
+            <h3 class="hiw-step-title">System Design</h3>
+            <p class="hiw-step-body">Custom bed layout, irrigation zones, crop plan, and automation spec. Delivered as a visual blueprint before anything is built.</p>
+          </div>
+
+          <div class="hiw-step fade-up">
+            <div class="hiw-step-img">
+              <div class="fpo-img" style="padding-bottom: 62%;" role="img" aria-label="FPO: build day installation">
+                <span class="fpo-tag">FPO · build day</span>
+              </div>
+            </div>
+            <div class="hiw-step-num">03</div>
+            <h3 class="hiw-step-title">Build &amp; Install</h3>
+            <p class="hiw-step-body">Beds constructed, soil laid, drip network installed, smart controller connected. Two-day installation, zero mess left behind.</p>
+          </div>
+
+          <div class="hiw-step fade-up">
+            <div class="hiw-step-img">
+              <div class="fpo-img" style="padding-bottom: 62%;" role="img" aria-label="FPO: planting hands">
+                <span class="fpo-tag">FPO · planting hands</span>
+              </div>
+            </div>
+            <div class="hiw-step-num">04</div>
+            <h3 class="hiw-step-title">Initial Planting</h3>
+            <p class="hiw-step-body">Seasonal alignment, succession planting schedule set, first crops in the ground. Your Harvest at Home agronomist explains the plan.</p>
+          </div>
+
+          <div class="hiw-step fade-up">
+            <div class="hiw-step-img">
+              <div class="fpo-img" style="padding-bottom: 62%;" role="img" aria-label="FPO: phone held in garden">
+                <span class="fpo-tag">FPO · phone in garden</span>
+              </div>
+            </div>
+            <div class="hiw-step-num">05</div>
+            <h3 class="hiw-step-title">App Activation</h3>
+            <p class="hiw-step-body">The Harvest at Home app connects to your sensors. Track moisture, harvest yields, streak goals, and upcoming maintenance—all in real time.</p>
+          </div>
+
+          <div class="hiw-step fade-up">
+            <div class="hiw-step-img">
+              <div class="fpo-img" style="padding-bottom: 62%;" role="img" aria-label="FPO: harvest basket">
+                <span class="fpo-tag">FPO · harvest basket</span>
+              </div>
+            </div>
+            <div class="hiw-step-num">06</div>
+            <h3 class="hiw-step-title">Ongoing Production</h3>
+            <p class="hiw-step-body">Weekly visits from your assigned horticulturalist. Watering automated. Your only job: harvest and eat.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         THE APP
+         ===================================================== -->
+    <section class="app-section" id="app" aria-labelledby="app-h2">
+      <div class="container">
+        <div class="app-grid">
+
+          <!-- Left: copy + features -->
+          <div>
+            <div class="fade-up">
+              <span class="eyebrow">The Harvest at Home App</span>
+              <h2 class="section-h2" id="app-h2">Grow streaks, not just vegetables.</h2>
+              <p class="section-body">Track your beds, log harvests, earn milestones, and watch your garden's real-time vitals from your phone. Your garden is a living system—the app makes it feel like one.</p>
+            </div>
+
+            <div class="app-features" data-stagger>
+              <div class="app-feature fade-up">
+                <h3 class="app-feature-title">Live sensor dashboard</h3>
+                <p class="app-feature-body">Soil moisture, temperature, and watering events in real time. Know your garden's health at a glance.</p>
+              </div>
+              <div class="app-feature fade-up">
+                <h3 class="app-feature-title">Harvest milestones &amp; streaks</h3>
+                <p class="app-feature-body">Log every harvest and earn badges—First Tomato, 100-lb Club, Winter Greens streak. Unlock care recommendations as you level up.</p>
+              </div>
+              <div class="app-feature fade-up">
+                <h3 class="app-feature-title">Seasonal crop calendar</h3>
+                <p class="app-feature-body">What's ready to harvest, what's coming next, when your Harvest at Home team visits. Everything scheduled, nothing to remember.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: phone mockup -->
+          <div class="phone-wrap fade-up" aria-label="App screenshot mockup showing garden dashboard">
+            <div class="phone-frame" role="img" aria-label="Phone mockup: Harvest at Home app dashboard">
+              <div class="phone-screen">
+                <!-- Status bar -->
+                <div class="phone-status-bar" aria-hidden="true">
+                  <div class="phone-notch"></div>
+                </div>
+
+                <div class="phone-body">
+                  <!-- Header -->
+                  <div class="phone-header-row">
+                    <span class="phone-greeting">Good morning, Sarah</span>
+                    <span class="phone-date">Tuesday · Week 14 of growing season</span>
+                  </div>
+
+                  <!-- Streak banner -->
+                  <div class="streak-banner" aria-label="Harvest streak: 7 weeks">
+                    <span class="streak-label">Harvest streak — 7 weeks</span>
+                    <div class="streak-dots" aria-hidden="true">
+                      <div class="streak-dot"></div>
+                      <div class="streak-dot"></div>
+                      <div class="streak-dot"></div>
+                      <div class="streak-dot"></div>
+                      <div class="streak-dot"></div>
+                      <div class="streak-dot"></div>
+                      <div class="streak-dot"></div>
+                    </div>
+                  </div>
+
+                  <!-- Beds -->
+                  <div>
+                    <div class="phone-section-label">Your beds</div>
+                    <div class="bed-list">
+                      <div class="bed-item">
+                        <div class="bed-top">
+                          <span class="bed-name">Bed 01 · Butter lettuce</span>
+                          <span class="bed-status">Ready to harvest</span>
+                        </div>
+                        <div class="bed-bar-wrap"><div class="bed-bar" style="width:85%;background:var(--ink)"></div></div>
+                      </div>
+                      <div class="bed-item">
+                        <div class="bed-top">
+                          <span class="bed-name">Bed 02 · Heirloom tomatoes</span>
+                          <span class="bed-status" style="color:var(--gold)">Est. 12 days</span>
+                        </div>
+                        <div class="bed-bar-wrap"><div class="bed-bar" style="width:62%;background:var(--gold)"></div></div>
+                      </div>
+                      <div class="bed-item">
+                        <div class="bed-top">
+                          <span class="bed-name">Bed 03 · Carrots &amp; radish</span>
+                          <span class="bed-status" style="color:var(--mid)">Est. 24 days</span>
+                        </div>
+                        <div class="bed-bar-wrap"><div class="bed-bar" style="width:40%;background:var(--mid)"></div></div>
+                      </div>
+                      <div class="bed-item">
+                        <div class="bed-top">
+                          <span class="bed-name">Bed 04 · Delicata squash</span>
+                          <span class="bed-status" style="color:var(--mid)">Est. 38 days</span>
+                        </div>
+                        <div class="bed-bar-wrap"><div class="bed-bar" style="width:28%;background:var(--mid)"></div></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Harvest bar -->
+                  <div class="harvest-bar" aria-label="This week: 14.2 lbs harvested, 22% more than last week">
+                    <div class="harvest-bar-text">
+                      <span class="harvest-bar-label">This week</span>
+                      <span class="harvest-bar-val">14.2 lbs harvested</span>
+                    </div>
+                    <span class="harvest-badge">+22% vs last week</span>
+                  </div>
+
+                  <!-- Tasks -->
+                  <div>
+                    <div class="phone-section-label">Today's tasks</div>
+                    <div class="tasks-list">
+                      <div class="task-item">
+                        <div class="task-check done" aria-hidden="true">✓</div>
+                        <span class="task-text done">Morning watering — automated</span>
+                      </div>
+                      <div class="task-item">
+                        <div class="task-check done" aria-hidden="true">✓</div>
+                        <span class="task-text done">Harvest butter lettuce (Bed 01)</span>
+                      </div>
+                      <div class="task-item">
+                        <div class="task-check" aria-hidden="true"></div>
+                        <span class="task-text">Harvest at Home team visit — 2:00 PM</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         YIELD
+         ===================================================== -->
+    <section class="yield-section" id="yield" aria-labelledby="yield-h2">
+      <div class="container">
+        <div class="fade-up">
+          <span class="eyebrow">Output by the numbers</span>
+          <h2 class="section-h2" id="yield-h2">What your backyard actually produces.</h2>
+          <p class="section-body">Based on a four-bed system in the Austin/Texas Hill Country climate. Output scales linearly with additional beds.</p>
+        </div>
+
+        <div class="yield-grid" data-stagger>
+
+          <div class="yield-card fade-up">
+            <div class="yield-number">10–20</div>
+            <span class="yield-unit">lbs/week (peak)</span>
+            <p class="yield-body">Spring and fall production at maximum yield per 4-bed system. Continuous harvest rotations.</p>
+          </div>
+
+          <div class="yield-card fade-up">
+            <div class="yield-number">600+</div>
+            <span class="yield-unit">lbs/year total</span>
+            <p class="yield-body">Annual output across four beds with managed rotation, seasonal crops, and year-round greens production.</p>
+          </div>
+
+          <div class="yield-card fade-up">
+            <div class="yield-number">52</div>
+            <span class="yield-unit">weeks of harvest</span>
+            <p class="yield-body">With cold-tolerant varieties, row covers, and managed succession planting, your garden never stops.</p>
+          </div>
+
+          <div class="yield-card fade-up">
+            <div class="yield-number">1–2</div>
+            <span class="yield-unit">hrs/week your time</span>
+            <p class="yield-body">With managed + automated tier. Harvest, enjoy, repeat. Your Harvest at Home team handles everything else.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         TESTIMONIALS
+         ===================================================== -->
+    <section class="testimonials-section" id="testimonials" aria-labelledby="testimonials-h2">
+      <div class="container">
+        <div class="fade-up">
+          <span class="eyebrow">What clients say</span>
+          <h2 class="section-h2" id="testimonials-h2">From families who made the switch.</h2>
+        </div>
+
+        <div class="testimonials-grid" data-stagger>
+
+          <article class="testimonial-card fade-up">
+            <blockquote class="testimonial-quote">
+              "The first time we cooked an entirely homegrown dinner, my kids asked why vegetables at restaurants don't taste this good. That was the moment I understood what we'd built."
+            </blockquote>
+            <footer class="testimonial-author">
+              <div class="testimonial-avatar" role="img" aria-label="FPO: Megan T. avatar">
+                <span class="fpo-tag">FPO</span>
+              </div>
+              <div>
+                <span class="testimonial-name">Megan T.</span>
+                <span class="testimonial-meta">Austin, TX · Managed Garden · 2 years</span>
+              </div>
+            </footer>
+          </article>
+
+          <article class="testimonial-card fade-up">
+            <blockquote class="testimonial-quote">
+              "We'd tried organic delivery boxes for years. Harvest at Home isn't in the same category. The app streak gamification is weirdly motivating—our whole family competes to log the harvest first."
+            </blockquote>
+            <footer class="testimonial-author">
+              <div class="testimonial-avatar" role="img" aria-label="FPO: David and Clara R. avatar">
+                <span class="fpo-tag">FPO</span>
+              </div>
+              <div>
+                <span class="testimonial-name">David &amp; Clara R.</span>
+                <span class="testimonial-meta">Westlake Hills, TX · Fully Controlled · 18 months</span>
+              </div>
+            </footer>
+          </article>
+
+          <article class="testimonial-card fade-up">
+            <blockquote class="testimonial-quote">
+              "I'm an MD and I care deeply about what goes into my family's food. The fact that I can open the app and see every input logged, every irrigation event, every amendment—that level of transparency is priceless."
+            </blockquote>
+            <footer class="testimonial-author">
+              <div class="testimonial-avatar" role="img" aria-label="FPO: Dr. Priya S. avatar">
+                <span class="fpo-tag">FPO</span>
+              </div>
+              <div>
+                <span class="testimonial-name">Dr. Priya S.</span>
+                <span class="testimonial-meta">Tarrytown, TX · Fully Controlled · 1 year</span>
+              </div>
+            </footer>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         MID-PAGE CTA BAND
+         ===================================================== -->
+    <section class="midcta-section" aria-labelledby="midcta-h3">
+      <div class="midcta-bg" aria-hidden="true">
+        <div class="fpo-img" style="padding-bottom:0;height:100%;min-height:380px;border-radius:0;background:linear-gradient(135deg,#1a1a1a,#282828,#333);">
+          <span class="fpo-tag">FPO · harvest photo</span>
+        </div>
+      </div>
+      <div class="midcta-scrim" aria-hidden="true"></div>
+      <div class="midcta-content fade-up">
+        <h3 class="midcta-h3" id="midcta-h3">Own the system <em>that feeds you.</em></h3>
+        <a href="#contact" class="btn btn-white">Begin Your Garden</a>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         TIERS (Pricing)
+         ===================================================== -->
+    <section class="tiers-section" id="tiers" aria-labelledby="tiers-h2">
+      <div class="container">
+        <div class="tiers-header fade-up">
+          <span class="eyebrow">Service Systems</span>
+          <h2 class="section-h2" id="tiers-h2">Choose your level of control.</h2>
+          <p class="section-body">Every system begins with a custom design. Select how involved you want to be.</p>
+        </div>
+
+        <div class="tiers-grid" data-stagger>
+
+          <!-- Tier 1: The Install -->
+          <div class="tier-card fade-up">
+            <div>
+              <span class="tier-tag">Foundation</span>
+              <h3 class="tier-name">The Install</h3>
+              <div class="tier-price">From $3,400</div>
+              <p class="tier-desc">A professionally engineered foundation. You manage day-to-day, we do the heavy lifting upfront.</p>
+            </div>
+            <ul class="tier-features" role="list">
+              <li>Site analysis &amp; custom layout design</li>
+              <li>4×8 ft modular raised bed construction</li>
+              <li>High-performance biologically active soil blend</li>
+              <li>Full drip irrigation network, zoned</li>
+              <li>Smart watering controller configured</li>
+              <li>Initial seasonal planting</li>
+              <li>Harvest at Home app onboarding</li>
+            </ul>
+            <a href="#contact" class="btn tier-btn">Start Here</a>
+          </div>
+
+          <!-- Tier 2: Managed Garden (featured) -->
+          <div class="tier-card featured fade-up" aria-label="Most popular: Managed Garden">
+            <div>
+              <span class="tier-tag">Most Popular</span>
+              <h3 class="tier-name">Managed Garden</h3>
+              <div class="tier-price">From $280/mo</div>
+              <p class="tier-desc">Stable, predictable yield with minimal effort on your end. Your agronomist comes weekly.</p>
+            </div>
+            <ul class="tier-features" role="list">
+              <li>Everything in The Install</li>
+              <li>Weekly maintenance visits (1.5 hrs)</li>
+              <li>Crop rotation &amp; seasonal replanting</li>
+              <li>Soil health monitoring &amp; amendments</li>
+              <li>Non-synthetic pest &amp; disease control</li>
+              <li>Harvest scheduling &amp; guidance</li>
+              <li>Monthly production report in app</li>
+            </ul>
+            <a href="#contact" class="btn tier-btn">Get a Design</a>
+          </div>
+
+          <!-- Tier 3: Fully Controlled -->
+          <div class="tier-card fade-up">
+            <div>
+              <span class="tier-tag">Full Automation</span>
+              <h3 class="tier-name">Fully Controlled</h3>
+              <div class="tier-price">From $480/mo</div>
+              <p class="tier-desc">Complete closed-loop system. Sensors manage everything. You only show up to harvest.</p>
+            </div>
+            <ul class="tier-features" role="list">
+              <li>Everything in Managed Garden</li>
+              <li>Full sensor array (moisture, temp, nutrients)</li>
+              <li>Weather-adaptive irrigation control</li>
+              <li>Remote real-time monitoring dashboard</li>
+              <li>Automated alerts &amp; auto-adjustments</li>
+              <li>Dedicated Harvest at Home agronomist on-call</li>
+              <li>Architectural bed upgrade options</li>
+            </ul>
+            <a href="#contact" class="btn tier-btn">Design My System</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         CTA / CONTACT FORM
+         ===================================================== -->
+    <section class="contact-section" id="contact" aria-labelledby="contact-h2">
+      <div class="container contact-inner">
+        <div class="fade-up">
+          <span class="eyebrow">Begin Your Harvest at Home</span>
+          <h2 class="contact-h2" id="contact-h2">Own the system <em>that feeds you.</em></h2>
+          <p class="contact-body">We take on a limited number of new installations per season. Request a site visit and receive a custom layout design within 5 business days.</p>
+        </div>
+
+        <div class="contact-form-panel glass fade-up" style="background:rgba(250,249,246,0.07);">
+          <form id="contact-form" novalidate aria-label="Request a site visit">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="contact-first">First name</label>
+                <input class="form-input" id="contact-first" type="text" name="first_name" placeholder="Jane" autocomplete="given-name" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="contact-last">Last name</label>
+                <input class="form-input" id="contact-last" type="text" name="last_name" placeholder="Smith" autocomplete="family-name" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-email">Email address</label>
+              <input class="form-input" id="contact-email" type="email" name="email" placeholder="jane@example.com" autocomplete="email" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-zip">Zip code</label>
+              <input
+                class="form-input"
+                id="contact-zip"
+                type="text"
+                name="zip"
+                placeholder="78704"
+                inputmode="numeric"
+                maxlength="5"
+                pattern="\d{5}"
+                autocomplete="postal-code"
+                required
+                aria-describedby="contact-zip-result"
+              />
+            </div>
+
+            <button type="submit" class="form-submit">Request a Site Visit →</button>
+
+            <div id="contact-zip-result" class="form-zip-result" role="status" aria-live="polite"></div>
+          </form>
+
+          <p class="form-note">Austin metro area currently served · Expanding to Bay Area Q3 2025</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+
+        <!-- Brand -->
+        <div class="footer-brand">
+          <a href="/" class="footer-logo" aria-label="Harvest — home">
+            <svg width="22" height="22" viewBox="0 0 28 28" fill="none" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="17" width="24" height="7" rx="2" fill="white" fill-opacity="0.5"/>
+              <rect x="4" y="16" width="20" height="2" rx="1" fill="white" fill-opacity="0.3"/>
+              <line x1="14" y1="15" x2="14" y2="9" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.5"/>
+              <path d="M14 12 C11 12 9 9 10 7 C12 8 14 10 14 12Z" fill="white" fill-opacity="0.5"/>
+              <path d="M14 11 C17 11 19 8 18 6 C16 7 14 9 14 11Z" fill="white" fill-opacity="0.5"/>
+            </svg>
+            <span class="footer-wordmark">harvest</span>
+          </a>
+          <p class="footer-tagline">Private kitchen garden systems. Designed, installed, and maintained for families who care what goes into their food.</p>
+          <p class="footer-subline">Austin, TX · Currently accepting new clients</p>
+        </div>
+
+        <!-- Systems -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Systems</h4>
+          <ul role="list">
+            <li><a href="#tiers">The Install</a></li>
+            <li><a href="#tiers">Managed Garden</a></li>
+            <li><a href="#tiers">Fully Controlled</a></li>
+            <li><a href="#tiers">Design Options</a></li>
+          </ul>
+        </div>
+
+        <!-- Company -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Company</h4>
+          <ul role="list">
+            <li><a href="#difference">Our Approach</a></li>
+            <li><a href="#how-it-works">The Agronomy Team</a></li>
+            <li><a href="#app">The App</a></li>
+            <li><a href="#testimonials">Client Stories</a></li>
+          </ul>
+        </div>
+
+        <!-- Get Started -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Get Started</h4>
+          <ul role="list">
+            <li><a href="#contact">Request a Site Visit</a></li>
+            <li><a href="#yield">Yield Calculator</a></li>
+            <li><a href="#contact">FAQ</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 Harvest at Home Garden Systems. All rights reserved.</p>
+        <p class="footer-serving">Serving the greater Austin metro area</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SR-only utility -->
+  <style>.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}</style>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

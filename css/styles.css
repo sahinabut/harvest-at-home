@@ -18,7 +18,7 @@
   --gold-light:  #d4b060;
   --mint:        #7ef0a8;
 
-  --container:   1200px;
+  --container:   1400px;
   --section-pad-desktop: 6.5rem;
   --section-pad-mobile:  4rem;
   --radius-card: 18px;
@@ -32,7 +32,7 @@ body {
   font-family: 'DM Sans', sans-serif;
   font-weight: 300;
   color: var(--ink);
-  background: var(--warm-white);
+  background: #ffffff;
   line-height: 1.7;
   font-size: 1rem;
   overflow-x: hidden;
@@ -46,6 +46,30 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   max-width: var(--container);
   margin-inline: auto;
   padding-inline: 1.5rem;
+}
+
+/* Full-bleed sections match diff-layout's 48px inset */
+.stats-section .container,
+.hiw-section .container,
+.app-section .container,
+.yield-section .container,
+.testimonials-section .container,
+.tiers-section .container,
+.contact-section .container {
+  max-width: none;
+  padding-inline: 48px;
+}
+
+@media (max-width: 900px) {
+  .stats-section .container,
+  .hiw-section .container,
+  .app-section .container,
+  .yield-section .container,
+  .testimonials-section .container,
+  .tiers-section .container,
+  .contact-section .container {
+    padding-inline: 16px;
+  }
 }
 
 /* ----- Eyebrow ----- */
@@ -506,9 +530,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    STATS STRIP
    ========================================================= */
 .stats-section {
-  background: var(--cream);
   padding: 5rem 0;
-  border-bottom: 1px solid var(--line);
 }
 .stats-grid {
   display: grid;
@@ -551,7 +573,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    MARQUEE
    ========================================================= */
 .marquee-section {
-  background: var(--sage-dark);
+  background: var(--ink);
   padding: 1.1rem 0;
   overflow: hidden;
 }
@@ -572,8 +594,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .marquee-item {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 400;
+  font-size: 0.875rem;
+  font-weight: 600;
   color: rgba(255,255,255,0.78);
   letter-spacing: 0.05em;
   padding: 0 2.5rem;
@@ -583,7 +605,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .marquee-item::after {
   content: '·';
-  color: var(--sage-light);
+  color: rgba(255,255,255,0.35);
   font-size: 1.1rem;
 }
 .marquee-item:last-child::after { display: none; }
@@ -597,111 +619,100 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    THE DIFFERENCE
    ========================================================= */
 .difference-section {
-  background: var(--cream);
-  padding: var(--section-pad-desktop) 0;
-}
-.diff-header {
-  max-width: 700px;
-  margin-bottom: 4rem;
+  background: #F5F4EB;
+  overflow: hidden;
+  padding: 48px 0;
 }
 
-/* Main 2-col layout */
-.diff-main {
+/* Full-bleed 2-col — 48px inset from edges */
+.diff-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: center;
-  margin-bottom: 5rem;
+  min-height: 80vh;
+  margin: 0 48px;
+  overflow: hidden;
 }
 
-/* Image */
-.diff-image { position: relative; }
-.diff-fpo {
-  border-radius: 24px;
-  background: linear-gradient(160deg, #c8b98a, #a89460, #8a7a4a);
-  aspect-ratio: 4/5;
+/* Left: image fills column */
+.diff-img-col {
+  position: relative;
+  overflow: hidden;
+}
+.diff-img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  min-height: 600px;
 }
-.diff-fpo::before { display: none; }
+.diff-img-label {
+  position: absolute;
+  top: 2.5rem;
+  left: 2.5rem;
+  right: 2.5rem;
+}
+.diff-img-h2 {
+  font-family: 'Albert Sans', sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  color: #fff;
+  line-height: 1.1;
+  margin-top: 0.5rem;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.35);
+}
 
-/* Pillars */
-.diff-pillars {
+/* Right: content */
+.diff-content-col {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  justify-content: center;
+  padding: 5rem 4rem 5rem 5rem;
 }
 .diff-intro {
-  font-size: 1rem;
-  color: var(--mid);
-  line-height: 1.75;
-  margin-bottom: 2.5rem;
-  max-width: 42ch;
-}
-.diff-pillar-list {
-  display: flex;
-  flex-direction: column;
-}
-.diff-pillar {
-  padding: 1.5rem 0;
-  border-top: 1px solid var(--line);
-}
-.diff-pillar:last-child { border-bottom: 1px solid var(--line); }
-.diff-pillar-head {
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
-}
-.diff-pillar-num {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: var(--mid);
-  letter-spacing: 0.1em;
-  flex-shrink: 0;
-  min-width: 1.5rem;
-}
-.diff-pillar-title {
-  font-family: 'Albert Sans', sans-serif;
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 1.5rem;
   color: var(--ink);
-  line-height: 1.3;
-}
-.diff-pillar-body {
-  font-size: 0.875rem;
-  color: var(--mid);
-  line-height: 1.7;
-  padding-left: 2.5rem;
+  line-height: 1.5;
+  letter-spacing: -0.03em;
+  margin-bottom: 3rem;
+  max-width: 38ch;
 }
 
-/* Bottom fact strip */
-.diff-facts {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  border-top: 1px solid var(--line);
-  padding-top: 2.5rem;
-}
-.diff-fact {
-  padding: 0 2rem;
-  border-left: 1px solid var(--line);
+/* Numbered list — North mail style */
+.diff-list {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
 }
-.diff-fact:first-child { border-left: none; padding-left: 0; }
-.diff-fact-label {
+.diff-row {
+  display: grid;
+  grid-template-columns: 3rem 1fr 1fr;
+  gap: 0 1.5rem;
+  align-items: start;
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--line);
+}
+.diff-row:last-child { border-bottom: none; }
+.diff-row-num {
+  font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+  font-size: 0.75rem;
+  color: var(--mid);
+  padding-top: 0.45rem;
+  font-style: normal;
+  letter-spacing: 0.05em;
+}
+.diff-row-title {
   font-family: 'Albert Sans', sans-serif;
-  font-size: 0.95rem;
+  font-size: 2rem;
   font-weight: 500;
   color: var(--ink);
   line-height: 1.3;
+  letter-spacing: -0.04em;
 }
-.diff-fact-sub {
-  font-size: 0.82rem;
-  color: var(--mid);
+.diff-row-body {
+  font-size: 1.3125rem;
+  color: var(--ink);
   line-height: 1.5;
+  letter-spacing: -0.03em;
 }
 
 /* FPO placeholder images */
@@ -735,17 +746,19 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* Responsive */
 @media (max-width: 900px) {
-  .diff-main { grid-template-columns: 1fr; gap: 2.5rem; }
-  .diff-facts { grid-template-columns: 1fr; gap: 1.5rem; }
-  .diff-fact { border-left: none; padding-left: 0; border-top: 1px solid var(--line); padding-top: 1.5rem; }
-  .diff-fact:first-child { border-top: none; padding-top: 0; }
+  .diff-layout { grid-template-columns: 1fr; margin: 0 16px; }
+  .diff-img { min-height: 380px; }
+  .diff-content-col { padding: 3rem 1.5rem; }
+  .diff-row { grid-template-columns: 2.5rem 1fr; }
+  .diff-row-body { grid-column: 2; }
+  .diff-row-title { font-size: 1.5rem; }
+  .diff-row-body { font-size: 1rem; }
 }
 
 /* =========================================================
    HOW IT WORKS
    ========================================================= */
 .hiw-section {
-  background: var(--cream);
   padding: var(--section-pad-desktop) 0;
 }
 .hiw-header {
@@ -790,7 +803,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    THE APP
    ========================================================= */
 .app-section {
-  background: var(--warm-white);
   padding: var(--section-pad-desktop) 0;
 }
 .app-grid {
@@ -1022,7 +1034,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    YIELD
    ========================================================= */
 .yield-section {
-  background: var(--cream);
   padding: var(--section-pad-desktop) 0;
 }
 .yield-grid {
@@ -1064,7 +1075,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    TESTIMONIALS
    ========================================================= */
 .testimonials-section {
-  background: var(--warm-white);
   padding: var(--section-pad-desktop) 0;
 }
 .testimonials-grid {
@@ -1177,7 +1187,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    TIERS
    ========================================================= */
 .tiers-section {
-  background: var(--cream);
   padding: var(--section-pad-desktop) 0;
 }
 .tiers-header {

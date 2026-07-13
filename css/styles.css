@@ -2,17 +2,6 @@
    Harvest at Home — Design System
    ========================================================= */
 
-/* PREVIEW MODE — hero + stats only */
-.marquee-section,
-#difference,
-#how-it-works,
-#app,
-#yield,
-#testimonials,
-.midcta-section,
-#tiers,
-#contact,
-.site-footer { display: none !important; }
 
 
 /* ----- CSS Custom Properties ----- */

@@ -159,6 +159,55 @@ function initNav() {
   });
 }
 
+/* ----- HIW Sticky Horizontal Scroll ----- */
+function initHiwScroll() {
+  const outer = document.querySelector('.hiw-sticky-outer');
+  const inner = document.querySelector('.hiw-sticky-inner');
+  const track = document.querySelector('.hiw-track');
+  const progressBar = document.querySelector('.hiw-progress-bar');
+  if (!outer || !track) return;
+
+  // Skip on mobile — plain swipe handles it
+  if (window.matchMedia('(max-width: 900px)').matches) return;
+
+  function setup() {
+    const trackScrollW = track.scrollWidth;
+    const wrapW = track.parentElement.offsetWidth;
+    const scrollDist = Math.max(0, trackScrollW - wrapW);
+    outer.style.height = `calc(100vh + ${scrollDist}px)`;
+  }
+
+  function update() {
+    const rect = outer.getBoundingClientRect();
+    const outerH = outer.offsetHeight;
+    const vh = window.innerHeight;
+    const scrolled = Math.max(0, -rect.top);
+    const scrollable = outerH - vh;
+    if (scrollable <= 0) return;
+
+    const progress = Math.min(1, scrolled / scrollable);
+    const trackScrollW = track.scrollWidth;
+    const wrapW = track.parentElement.offsetWidth;
+    const maxTranslate = Math.max(0, trackScrollW - wrapW);
+
+    track.style.transform = `translateX(${-progress * maxTranslate}px)`;
+    if (progressBar) progressBar.style.width = `${progress * 100}%`;
+
+    // Active card: whichever is closest to the leading edge
+    const cards = track.querySelectorAll('.hiw-card');
+    const totalCards = cards.length;
+    const exactActive = progress * (totalCards - 1);
+    cards.forEach((card, i) => {
+      card.classList.toggle('is-active', Math.round(exactActive) === i);
+    });
+  }
+
+  setup();
+  update();
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', () => { setup(); update(); });
+}
+
 /* ----- Nav scroll glass ----- */
 function initNavScroll() {
   const nav = document.querySelector('.site-nav');
@@ -178,4 +227,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initNav();
   initNavScroll();
+  initHiwScroll();
 });

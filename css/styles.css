@@ -694,7 +694,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .diff-row:last-child { border-bottom: none; }
 .diff-row-num {
   font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
-  font-size: 0.75rem;
+  font-size: 1rem;
   color: var(--mid);
   padding-top: 0.45rem;
   font-style: normal;
@@ -709,7 +709,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   letter-spacing: -0.04em;
 }
 .diff-row-body {
-  font-size: 1.3125rem;
+  font-size: 1.125rem;
   color: var(--ink);
   line-height: 1.5;
   letter-spacing: -0.03em;
@@ -756,47 +756,143 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* =========================================================
-   HOW IT WORKS
+   HOW IT WORKS — sticky horizontal scroll
    ========================================================= */
 .hiw-section {
-  padding: var(--section-pad-desktop) 0;
+  padding: 0;
 }
-.hiw-header {
-  max-width: 560px;
-  margin-bottom: 3.5rem;
+
+/* Outer: tall div that provides scroll distance */
+.hiw-sticky-outer {
+  /* height set dynamically by JS */
 }
-.hiw-steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-.hiw-step {
+
+/* Inner: sticks to viewport while user scrolls */
+.hiw-sticky-inner {
+  position: sticky;
+  top: 0;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  padding: 4rem 48px 3rem;
+  overflow: hidden;
 }
-.hiw-step-img {
-  margin-bottom: 0.25rem;
+
+/* Two-col header */
+.hiw-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-shrink: 0;
+  margin-bottom: 3rem;
 }
-.hiw-step-num {
+.hiw-header-left { flex-shrink: 0; }
+.hiw-header-right {
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Progress bar */
+.hiw-progress-wrap {
+  height: 1px;
+  background: var(--line);
+  border-radius: 1px;
+  overflow: hidden;
+}
+.hiw-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--ink);
+  transition: width 0.08s linear;
+}
+
+/* Horizontal track */
+.hiw-track-wrap {
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+.hiw-track {
+  display: flex;
+  gap: 1.25rem;
+  height: 100%;
+  will-change: transform;
+}
+
+/* Cards */
+.hiw-card {
+  flex-shrink: 0;
+  width: clamp(380px, 44vw, 580px);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transform-origin: bottom left;
+  transform: scale(0.88);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.hiw-card.is-active {
+  transform: scale(1);
+}
+.hiw-card-img {
+  flex: 1;
+  border-radius: 24px;
+  overflow: hidden;
+  min-height: 0;
+}
+.hiw-card-img .fpo-img {
+  height: 100%;
+  border-radius: 24px;
+}
+.hiw-card-img .fpo-img::before { display: none; }
+.hiw-card-foot {
+  flex-shrink: 0;
+  padding: 0 2px;
+}
+.hiw-card-num {
+  font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+  font-size: 0.75rem;
+  color: var(--mid);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+}
+.hiw-card-title {
   font-family: 'Albert Sans', sans-serif;
-  font-size: 2rem;
-  font-weight: 300;
-  color: var(--gold);
-  line-height: 1;
-  margin-bottom: 0.1rem;
-}
-.hiw-step-title {
-  font-family: 'Albert Sans', sans-serif;
-  font-size: 1.05rem;
-  font-weight: 400;
+  font-size: 1.125rem;
+  font-weight: 500;
   color: var(--ink);
-  margin-bottom: 0.25rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.35rem;
 }
-.hiw-step-body {
+.hiw-card-text {
   font-size: 0.85rem;
   color: var(--mid);
   line-height: 1.65;
+}
+
+/* Mobile: plain horizontal swipe */
+@media (max-width: 900px) {
+  .hiw-sticky-outer { height: auto !important; }
+  .hiw-sticky-inner {
+    position: static;
+    height: auto;
+    padding: var(--section-pad-mobile) 1.5rem;
+    overflow: visible;
+  }
+  .hiw-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .hiw-header-right { max-width: 100%; }
+  .hiw-progress-wrap { display: none; }
+  .hiw-track-wrap { overflow-x: auto; overflow-y: visible; flex: none; }
+  .hiw-track { height: auto; padding-bottom: 1rem; }
+  .hiw-card { width: 280px; transform: scale(1) !important; }
+  .hiw-card-img { flex: none; height: 220px; }
+  .hiw-card-img .fpo-img { height: 100%; }
 }
 
 /* =========================================================

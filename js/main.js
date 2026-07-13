@@ -93,7 +93,7 @@ function initScrollAnimations() {
       if (entry.isIntersecting) {
         // Stagger children if parent has data-stagger
         const delay = entry.target.dataset.staggerIndex
-          ? parseInt(entry.target.dataset.staggerIndex) * 80
+          ? parseInt(entry.target.dataset.staggerIndex) * 110
           : 0;
         setTimeout(() => {
           entry.target.classList.add('visible');
@@ -101,7 +101,7 @@ function initScrollAnimations() {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
   els.forEach(el => observer.observe(el));
 }
@@ -159,55 +159,6 @@ function initNav() {
   });
 }
 
-/* ----- HIW Sticky Horizontal Scroll ----- */
-function initHiwScroll() {
-  const outer = document.querySelector('.hiw-sticky-outer');
-  const inner = document.querySelector('.hiw-sticky-inner');
-  const track = document.querySelector('.hiw-track');
-  const progressBar = document.querySelector('.hiw-progress-bar');
-  if (!outer || !track) return;
-
-  // Skip on mobile — plain swipe handles it
-  if (window.matchMedia('(max-width: 900px)').matches) return;
-
-  function setup() {
-    const trackScrollW = track.scrollWidth;
-    const wrapW = track.parentElement.offsetWidth;
-    const scrollDist = Math.max(0, trackScrollW - wrapW);
-    outer.style.height = `calc(100vh + ${scrollDist}px)`;
-  }
-
-  function update() {
-    const rect = outer.getBoundingClientRect();
-    const outerH = outer.offsetHeight;
-    const vh = window.innerHeight;
-    const scrolled = Math.max(0, -rect.top);
-    const scrollable = outerH - vh;
-    if (scrollable <= 0) return;
-
-    const progress = Math.min(1, scrolled / scrollable);
-    const trackScrollW = track.scrollWidth;
-    const wrapW = track.parentElement.offsetWidth;
-    const maxTranslate = Math.max(0, trackScrollW - wrapW);
-
-    track.style.transform = `translateX(${-progress * maxTranslate}px)`;
-    if (progressBar) progressBar.style.width = `${progress * 100}%`;
-
-    // Active card: whichever is closest to the leading edge
-    const cards = track.querySelectorAll('.hiw-card');
-    const totalCards = cards.length;
-    const exactActive = progress * (totalCards - 1);
-    cards.forEach((card, i) => {
-      card.classList.toggle('is-active', Math.round(exactActive) === i);
-    });
-  }
-
-  setup();
-  update();
-  window.addEventListener('scroll', update, { passive: true });
-  window.addEventListener('resize', () => { setup(); update(); });
-}
-
 /* ----- Nav scroll glass ----- */
 function initNavScroll() {
   const nav = document.querySelector('.site-nav');
@@ -216,6 +167,32 @@ function initNavScroll() {
   const toggle = () => nav.classList.toggle('scrolled', window.scrollY > 40);
   toggle(); // run once on load
   window.addEventListener('scroll', toggle, { passive: true });
+}
+
+/* ----- Mid CTA scroll reveal ----- */
+function initMidCta() {
+  const section = document.querySelector('.midcta-section');
+  const cta = document.querySelector('.midcta-cta');
+  const h3 = document.querySelector('.midcta-h3');
+  if (!section || !cta || !h3) return;
+
+  function update() {
+    const rect = section.getBoundingClientRect();
+    const sectionH = section.offsetHeight;
+    // progress: 0 → 1 over the full 200vh scroll
+    const progress = -rect.top / (sectionH - window.innerHeight);
+    // After 50%: hide heading, show button
+    if (progress >= 0.5) {
+      h3.classList.add('hidden');
+      cta.classList.add('revealed');
+    } else {
+      h3.classList.remove('hidden');
+      cta.classList.remove('revealed');
+    }
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
 }
 
 /* ----- Init ----- */
@@ -227,5 +204,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initNav();
   initNavScroll();
-  initHiwScroll();
+  initMidCta();
 });

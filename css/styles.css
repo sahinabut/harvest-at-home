@@ -597,82 +597,112 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    THE DIFFERENCE
    ========================================================= */
 .difference-section {
-  background: var(--warm-white);
+  background: var(--cream);
   padding: var(--section-pad-desktop) 0;
 }
-.difference-top {
-  max-width: 640px;
-  margin-bottom: 3.5rem;
-}
-.difference-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1.5rem;
-  align-items: start;
+.diff-header {
+  max-width: 700px;
+  margin-bottom: 4rem;
 }
 
-/* Comparison cards */
-.comp-card {
-  border-radius: var(--radius-card);
-  padding: 1.75rem;
-  border: 1px solid var(--line);
+/* Main 2-col layout */
+.diff-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  margin-bottom: 5rem;
 }
-.comp-card.store {
-  background: #f0eff3;
+
+/* Image */
+.diff-image { position: relative; }
+.diff-fpo {
+  border-radius: 24px;
+  background: linear-gradient(160deg, #c8b98a, #a89460, #8a7a4a);
+  aspect-ratio: 4/5;
+  width: 100%;
 }
-.comp-card.harvest {
-  background: linear-gradient(145deg, #f5eedc, #ede4ca);
-  border-color: rgba(184,148,42,0.25);
-  box-shadow: 0 24px 60px rgba(46,58,40,0.13);
-}
-.comp-badge {
-  display: inline-block;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  border-radius: var(--radius-pill);
-  padding: 0.3rem 0.85rem;
-  margin-bottom: 1.1rem;
-}
-.store .comp-badge {
-  background: rgba(107,104,96,0.12);
-  color: var(--mid);
-}
-.harvest .comp-badge {
-  background: rgba(184,148,42,0.18);
-  color: var(--gold);
-}
-.comp-card-title {
-  font-family: 'Albert Sans', sans-serif;
-  font-size: 1rem;
-  font-weight: 400;
-  margin-bottom: 1.1rem;
-  color: var(--ink);
-}
-.comp-list {
-  list-style: none;
+.diff-fpo::before { display: none; }
+
+/* Pillars */
+.diff-pillars {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0;
 }
-.comp-list li {
-  display: flex;
-  gap: 0.55rem;
-  font-size: 0.85rem;
-  font-weight: 300;
+.diff-intro {
+  font-size: 1rem;
   color: var(--mid);
-  line-height: 1.4;
+  line-height: 1.75;
+  margin-bottom: 2.5rem;
+  max-width: 42ch;
 }
-.comp-list li .icon {
+.diff-pillar-list {
+  display: flex;
+  flex-direction: column;
+}
+.diff-pillar {
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--line);
+}
+.diff-pillar:last-child { border-bottom: 1px solid var(--line); }
+.diff-pillar-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+.diff-pillar-num {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--mid);
+  letter-spacing: 0.1em;
   flex-shrink: 0;
-  font-style: normal;
-  font-weight: 500;
-  width: 1rem;
+  min-width: 1.5rem;
 }
-.store .comp-list li .icon { color: #b0a8a0; }
-.harvest .comp-list li .icon { color: var(--ink); }
-.harvest .comp-list li { color: var(--ink); }
+.diff-pillar-title {
+  font-family: 'Albert Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.diff-pillar-body {
+  font-size: 0.875rem;
+  color: var(--mid);
+  line-height: 1.7;
+  padding-left: 2.5rem;
+}
+
+/* Bottom fact strip */
+.diff-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line);
+  padding-top: 2.5rem;
+}
+.diff-fact {
+  padding: 0 2rem;
+  border-left: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.diff-fact:first-child { border-left: none; padding-left: 0; }
+.diff-fact-label {
+  font-family: 'Albert Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.diff-fact-sub {
+  font-size: 0.82rem;
+  color: var(--mid);
+  line-height: 1.5;
+}
 
 /* FPO placeholder images */
 .fpo-img {
@@ -703,55 +733,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   letter-spacing: 0.05em;
 }
 
-/* Right column */
-.difference-right {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-.difference-h3 {
-  font-family: 'Albert Sans', sans-serif;
-  font-size: clamp(1.3rem, 2.5vw, 1.75rem);
-  font-weight: 400;
-  line-height: 1.2;
-  color: var(--ink);
-  margin-bottom: 0.75rem;
-}
-.difference-h3 em { font-style: italic; }
-.difference-right-body {
-  font-size: 0.9rem;
-  color: var(--mid);
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
-}
-.system-features {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-.system-feature {
-  border-top: 1px solid var(--line);
-  padding-top: 1.1rem;
-}
-.system-feature-label {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  color: var(--mid);
-  text-transform: uppercase;
-  margin-bottom: 0.3rem;
-}
-.system-feature-title {
-  font-family: 'Albert Sans', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 400;
-  color: var(--ink);
-  margin-bottom: 0.4rem;
-}
-.system-feature-body {
-  font-size: 0.82rem;
-  color: var(--mid);
-  line-height: 1.6;
+/* Responsive */
+@media (max-width: 900px) {
+  .diff-main { grid-template-columns: 1fr; gap: 2.5rem; }
+  .diff-facts { grid-template-columns: 1fr; gap: 1.5rem; }
+  .diff-fact { border-left: none; padding-left: 0; border-top: 1px solid var(--line); padding-top: 1.5rem; }
+  .diff-fact:first-child { border-top: none; padding-top: 0; }
 }
 
 /* =========================================================

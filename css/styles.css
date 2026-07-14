@@ -91,7 +91,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .section-h2 {
   font-family: 'Albert Sans', sans-serif;
   font-weight: 500;
-  font-size: clamp(3rem, 6vw, 6rem);
+  font-size: clamp(2rem, 5vw, 6rem);
   line-height: 1.08;
   color: var(--ink);
   letter-spacing: -0.02em;
@@ -100,7 +100,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .section-h2 em { font-style: italic; }
 
 .section-body {
-  font-size: 24px;
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
   font-weight: 300;
   color: var(--mid);
   line-height: 1.55;
@@ -1999,43 +1999,95 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     letter-spacing: 0.15em;
   }
 
+  /* Typography */
+  .section-h2 { font-size: clamp(2rem, 6vw, 4rem); }
+  .section-body { font-size: 1.125rem; }
+  .hero-eyebrow { top: 2rem; }
+  .hero-sub { font-size: 1.125rem; }
+
+  /* Stats */
+  .stats-section { padding: 4rem 0; }
+
   /* Difference */
   .difference-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .diff-intro { font-size: 1.125rem; }
 
   /* How it works */
   .hiw-steps { grid-template-columns: repeat(2, 1fr); }
+  .hiw-row { margin-bottom: 3rem; }
 
   /* App */
   .app-grid { grid-template-columns: 1fr; gap: 3rem; }
   .phone-wrap { order: -1; }
+  .app-head .section-body { font-size: 1.125rem; }
 
   /* Yield */
   .yield-grid { grid-template-columns: repeat(2, 1fr); min-height: auto; }
-  .yield-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); }
+  .yield-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); padding: 2rem 1.5rem; }
   .yield-card:last-child { border-bottom: none; }
+  .yield-header { width: 100%; padding: 4rem 24px 3rem; }
 
   /* Testimonials */
-  .testimonials-grid { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .testimonial-card { padding: 2rem 1.75rem; }
+  .testimonial-quote { font-size: 1.125rem; }
 
   /* Tiers */
   .tiers-grid { grid-template-columns: 1fr; }
-  .tier-card { min-height: auto; }
+  .tier-card { min-height: auto; padding: 2.5rem 2rem; gap: 2.5rem; }
+
+  /* Contact */
+  .contact-section { padding: 4rem 24px; }
+  .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .contact-right { width: 100%; }
+  .contact-form-wrap { padding: 2.5rem; }
+  .contact-h2 { font-size: 2.75rem; }
 
   /* Footer */
   .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
   .footer-brand { grid-column: 1 / -1; }
+  .footer-nav { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .footer-subscribe-form { width: 100%; }
+  .footer-email-input { flex: 1; width: auto; }
 }
 
 /* =========================================================
    RESPONSIVE — 560px
    ========================================================= */
 @media (max-width: 560px) {
+  /* Typography */
+  .section-h2 { font-size: clamp(1.75rem, 7vw, 3rem); }
+  .section-body { font-size: 1rem; }
+  .hero-h1 { font-size: 2.2rem; }
+  .hero-sub { font-size: 1rem; }
+
+  /* HIW */
   .hiw-steps { grid-template-columns: 1fr; }
+
+  /* Yield */
   .yield-grid { grid-template-columns: 1fr; }
+  .yield-header { padding: 3rem 16px 2rem; }
+
+  /* Tiers */
+  .tier-card { padding: 2rem 1.5rem; gap: 2rem; }
+
+  /* Testimonials */
+  .testimonial-card { padding: 1.5rem 1.25rem; }
+
+  /* Contact */
+  .contact-section { padding: 3rem 16px; }
+  .contact-form-wrap { padding: 2rem 1.5rem; min-height: auto; }
+  .contact-h2 { font-size: 2rem; }
   .form-row { grid-template-columns: 1fr; }
+  .form-input { min-height: 56px; }
+  .form-submit { min-height: 52px; }
+
+  /* Footer */
+  .footer-nav { grid-template-columns: 1fr; gap: 1.5rem; }
   .footer-top { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; text-align: center; }
-  .hero-h1 { font-size: 2.2rem; }
-  .phone-frame { width: 240px; }
+
+  /* Phone */
+  .phone-frame { width: 220px; }
   .midcta-content { padding: 4rem 1.5rem; }
 }

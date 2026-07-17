@@ -2241,7 +2241,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   inset: 0;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 0;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
@@ -2292,12 +2292,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: var(--ink);
   letter-spacing: -0.03em;
   line-height: 1.2;
+  margin-bottom: 2rem;
 }
 .survey-q-sub {
   font-size: 0.875rem;
   color: var(--mid);
   line-height: 1.5;
-  margin-top: -0.5rem;
+  margin-top: -1.75rem;
+  margin-bottom: 2rem;
 }
 
 /* Options */

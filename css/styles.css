@@ -2412,7 +2412,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .survey-btn-next:hover { opacity: 0.82; }
 
 /* Success */
-.survey-success { display: flex; flex-direction: column; gap: 1.25rem; }
+.survey-success { display: flex; flex-direction: column; gap: 0; }
+.survey-success .survey-success-icon { margin-bottom: 3.5rem; }
+.survey-success .survey-q { margin-bottom: 0.75rem; }
+.survey-success .survey-success-body { margin-top: 0; }
 .survey-success-icon {
   width: 52px;
   height: 52px;

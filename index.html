@@ -34,7 +34,7 @@
         </ul>
 
         <!-- Nav CTA + hamburger -->
-        <a href="#contact" class="btn nav-cta">Request a design</a>
+        <a href="#contact" class="btn nav-cta" data-open-survey>Request a design</a>
         <button class="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links-mobile">
           <span></span><span></span><span></span>
         </button>
@@ -136,10 +136,6 @@
           <div class="stat-item fade-up">
             <div class="stat-number">400<span class="stat-suffix">+</span></div>
             <div class="stat-label">lbs/year per bed</div>
-          </div>
-          <div class="stat-item fade-up">
-            <div class="stat-number">1<span class="stat-suffix">—2hrs</span></div>
-            <div class="stat-label">your time per week</div>
           </div>
           <div class="stat-item fade-up">
             <div class="stat-number">0</div>
@@ -463,7 +459,7 @@
         <div class="midcta-scrim" aria-hidden="true"></div>
         <div class="midcta-content">
           <h3 class="midcta-h3" id="midcta-h3">Own the system <em>that feeds you.</em></h3>
-          <a href="#contact" class="btn btn-white midcta-cta">Begin Your Garden</a>
+          <a href="#contact" class="btn btn-white midcta-cta" data-open-survey>Begin Your Garden</a>
         </div>
       </div>
     </section>
@@ -487,7 +483,7 @@
               <span class="tier-badge">Foundation</span>
               <h3 class="tier-heading"><strong>The Install.</strong> <span class="tier-heading-sub">A professionally engineered foundation. You manage day-to-day, we handle the build.</span></h3>
               <div class="tier-price">From $3,400</div>
-              <a href="#contact" class="tier-cta-btn">Get started</a>
+              <a href="#contact" class="tier-cta-btn" data-open-survey>Get started</a>
             </div>
             <div class="tier-features-wrap">
               <p class="tier-features-label">One-time install, including:</p>
@@ -510,7 +506,7 @@
               <span class="tier-badge">Most Popular</span>
               <h3 class="tier-heading"><strong>Managed Garden.</strong> <span class="tier-heading-sub">Stable, predictable yield. Your agronomist visits weekly, you just harvest.</span></h3>
               <div class="tier-price">From $280<span class="tier-price-unit">/mo</span></div>
-              <a href="#contact" class="tier-cta-btn">Get started</a>
+              <a href="#contact" class="tier-cta-btn" data-open-survey>Get started</a>
             </div>
             <div class="tier-features-wrap">
               <p class="tier-features-label">Monthly service, including:</p>
@@ -533,7 +529,7 @@
               <span class="tier-badge">Full Automation</span>
               <h3 class="tier-heading"><strong>Fully Controlled.</strong> <span class="tier-heading-sub">Complete closed-loop automation. Sensors run the garden. You only show up to eat.</span></h3>
               <div class="tier-price">From $480<span class="tier-price-unit">/mo</span></div>
-              <a href="#contact" class="tier-cta-btn">Get started</a>
+              <a href="#contact" class="tier-cta-btn" data-open-survey>Get started</a>
             </div>
             <div class="tier-features-wrap">
               <p class="tier-features-label">Full automation, including:</p>
@@ -691,6 +687,144 @@
 
   <!-- SR-only utility -->
   <style>.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}</style>
+
+  <!-- Garden Assessment Survey Modal -->
+  <div id="survey-modal" class="survey-modal" role="dialog" aria-modal="true" aria-labelledby="survey-title" hidden>
+    <div class="survey-inner">
+      <div class="survey-left">
+        <div class="survey-topbar">
+          <a href="/" class="survey-wordmark">harvest</a>
+          <button class="survey-close" id="survey-close-btn" aria-label="Close survey">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 3l12 12M15 3L3 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+        <div class="survey-progress-wrap"><div class="survey-progress-bar" id="survey-progress-bar"></div></div>
+        <div class="survey-body">
+          <p class="survey-step-count" id="survey-step-count">Step 1 of 9</p>
+          <div class="survey-steps-wrap">
+
+            <div class="survey-step" data-step="1">
+              <h2 class="survey-q" id="survey-title">What's your ZIP code?</h2>
+              <div class="survey-input-wrap">
+                <input type="text" class="survey-text-input" id="s-zip" placeholder="e.g. 78704" inputmode="numeric" maxlength="5" autocomplete="postal-code" />
+              </div>
+            </div>
+
+            <div class="survey-step" data-step="2">
+              <h2 class="survey-q">What best describes your property?</h2>
+              <div class="survey-options" role="radiogroup">
+                <label class="survey-option"><input type="radio" name="property" value="house"><span>House with a yard</span></label>
+                <label class="survey-option"><input type="radio" name="property" value="townhome"><span>Townhome with outdoor space</span></label>
+                <label class="survey-option"><input type="radio" name="property" value="condo"><span>Condo with a patio or balcony</span></label>
+                <label class="survey-option"><input type="radio" name="property" value="apartment"><span>Apartment</span></label>
+                <label class="survey-option"><input type="radio" name="property" value="other"><span>Other</span></label>
+              </div>
+            </div>
+
+            <div class="survey-step" data-step="3">
+              <h2 class="survey-q">How much direct sun does your garden area get each day?</h2>
+              <div class="survey-options" role="radiogroup">
+                <label class="survey-option"><input type="radio" name="sun" value="6+"><span>6+ hours</span></label>
+                <label class="survey-option"><input type="radio" name="sun" value="3-6"><span>3–6 hours <span class="survey-option-sub">(Partial sun)</span></span></label>
+                <label class="survey-option"><input type="radio" name="sun" value="lt3"><span>Less than 3 hours <span class="survey-option-sub">(Mostly shade)</span></span></label>
+                <label class="survey-option"><input type="radio" name="sun" value="notsure"><span>Not sure</span></label>
+              </div>
+            </div>
+
+            <div class="survey-step" data-step="4">
+              <h2 class="survey-q">How many raised beds (4×8 ft) would you ideally like?</h2>
+              <p class="survey-q-sub">As a guide: 1 bed fits in roughly 8×12 ft, and 2 beds fit in about 12×12 ft.</p>
+              <div class="survey-options" role="radiogroup">
+                <label class="survey-option"><input type="radio" name="beds" value="1"><span>1</span></label>
+                <label class="survey-option"><input type="radio" name="beds" value="2-4"><span>2–4</span></label>
+                <label class="survey-option"><input type="radio" name="beds" value="5+"><span>5+</span></label>
+                <label class="survey-option"><input type="radio" name="beds" value="notsure"><span>Not sure</span></label>
+              </div>
+            </div>
+
+            <div class="survey-step" data-step="5">
+              <h2 class="survey-q">Which best describes your primary goal?</h2>
+              <div class="survey-options" role="radiogroup">
+                <label class="survey-option"><input type="radio" name="goal" value="cleaner"><span>Grow cleaner / healthier food</span></label>
+                <label class="survey-option"><input type="radio" name="goal" value="grocery"><span>Cut down grocery bill</span></label>
+                <label class="survey-option"><input type="radio" name="goal" value="beautiful"><span>Have a beautiful garden</span></label>
+                <label class="survey-option"><input type="radio" name="goal" value="sustainable"><span>Live sustainably</span></label>
+                <label class="survey-option"><input type="radio" name="goal" value="kids"><span>Teach your kids to garden</span></label>
+              </div>
+            </div>
+
+            <div class="survey-step" data-step="6">
+              <h2 class="survey-q">How much food would you like your garden to produce?</h2>
+              <div class="survey-options" role="radiogroup">
+                <label class="survey-option"><input type="radio" name="production" value="herbs"><span>Fresh herbs and a few favorites</span></label>
+                <label class="survey-option"><input type="radio" name="production" value="weekly"><span>Weekly harvests for our household</span></label>
+                <label class="survey-option"><input type="radio" name="production" value="most"><span>Most of our seasonal produce</span></label>
+                <label class="survey-option"><input type="radio" name="production" value="max"><span>As much food as possible</span></label>
+              </div>
+            </div>
+
+            <div class="survey-step" data-step="7">
+              <h2 class="survey-q">When are you hoping to install your garden?</h2>
+              <div class="survey-options" role="radiogroup">
+                <label class="survey-option"><input type="radio" name="timeline" value="now"><span>Ready now</span></label>
+                <label class="survey-option"><input type="radio" name="timeline" value="3mo"><span>Within 3 months</span></label>
+                <label class="survey-option"><input type="radio" name="timeline" value="3-12mo"><span>3–12 months</span></label>
+                <label class="survey-option"><input type="radio" name="timeline" value="exploring"><span>Just exploring</span></label>
+              </div>
+            </div>
+
+            <div class="survey-step" data-step="8">
+              <h2 class="survey-q">Anything else we should know?</h2>
+              <div class="survey-input-wrap">
+                <textarea class="survey-textarea" id="s-notes" placeholder="Share any details about your space, goals, or questions..."></textarea>
+              </div>
+            </div>
+
+            <div class="survey-step" data-step="9">
+              <h2 class="survey-q">Where can we send your results and next steps?</h2>
+              <div class="survey-contact-fields">
+                <div class="survey-field-group">
+                  <label class="survey-field-label" for="s-name">Name</label>
+                  <input type="text" class="survey-text-input" id="s-name" placeholder="Jane Smith" autocomplete="name" />
+                </div>
+                <div class="survey-field-group">
+                  <label class="survey-field-label" for="s-email">Email</label>
+                  <input type="email" class="survey-text-input" id="s-email" placeholder="jane@example.com" autocomplete="email" />
+                </div>
+                <div class="survey-field-group">
+                  <label class="survey-field-label" for="s-phone">Phone <span class="survey-optional">(optional)</span></label>
+                  <input type="tel" class="survey-text-input" id="s-phone" placeholder="+1 (555) 000-0000" autocomplete="tel" />
+                </div>
+              </div>
+            </div>
+
+            <div class="survey-step" data-step="10">
+              <div class="survey-success">
+                <div class="survey-success-icon">
+                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 11l5 5L19 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h2 class="survey-q">You're on the list.</h2>
+                <p class="survey-success-body">We'll review your garden assessment and reach out within 1 business day with your custom layout options and pricing.</p>
+              </div>
+            </div>
+
+          </div><!-- /.survey-steps-wrap -->
+        </div><!-- /.survey-body -->
+        <div class="survey-nav" id="survey-nav">
+          <button class="survey-btn-back" id="survey-back">← Back</button>
+          <button class="survey-btn-next" id="survey-next">Continue →</button>
+        </div>
+      </div><!-- /.survey-left -->
+
+      <div class="survey-right" aria-hidden="true">
+        <img src="assets/why-harvest.png" alt="">
+        <div class="survey-right-overlay"></div>
+        <div class="survey-right-caption">
+          <p class="survey-right-quote">"From consultation to first harvest in under 6 weeks."</p>
+        </div>
+      </div>
+    </div><!-- /.survey-inner -->
+  </div><!-- /#survey-modal -->
 
   <script src="js/main.js"></script>
 </body>

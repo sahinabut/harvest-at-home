@@ -233,14 +233,16 @@ function initSurvey() {
   function showStep(n) {
     const prev = modal.querySelector('.survey-step.active');
     if (prev) {
+      prev.classList.remove('active');
       prev.classList.add('exiting');
-      prev.addEventListener('animationend', () => {
-        prev.classList.remove('active', 'exiting');
+      prev.addEventListener('transitionend', () => {
+        prev.classList.remove('exiting');
       }, { once: true });
     }
     const next = getStep(n);
     if (!next) return;
-    next.classList.add('active');
+    next.classList.add('active', 'loading');
+    setTimeout(() => next.classList.remove('loading'), 400);
     current = n;
 
     // Progress bar (steps 1-9 only)
@@ -266,7 +268,11 @@ function initSurvey() {
     if (backBtn) backBtn.style.visibility = n > 1 ? 'visible' : 'hidden';
 
     // Next button label
-    if (nextBtn) nextBtn.textContent = n === TOTAL_STEPS ? 'Submit →' : 'Continue →';
+    if (nextBtn) {
+      if (n === TOTAL_STEPS) nextBtn.textContent = 'Submit →';
+      else if (n > TOTAL_STEPS) nextBtn.textContent = 'Back to Home';
+      else nextBtn.textContent = 'Continue →';
+    }
   }
 
   function openModal() {
@@ -311,6 +317,9 @@ function initSurvey() {
     } else if (current === TOTAL_STEPS) {
       // Submit: show success screen (step 10)
       showStep(10);
+    } else {
+      // Success screen: close modal
+      closeModal();
     }
   }
 

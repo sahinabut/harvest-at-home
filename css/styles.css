@@ -121,6 +121,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: opacity 0.2s, transform 0.15s;
   white-space: nowrap;
 }
+.btn-ink {
+  background: var(--ink);
+  color: #fff;
+  min-height: 64px;
+  min-width: 208px;
+}
 .btn:hover { opacity: 0.88; transform: translateY(-1px); }
 .btn:active { transform: translateY(0); }
 .btn:focus-visible { outline: 2px solid var(--mint); outline-offset: 3px; }
@@ -689,6 +695,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   justify-content: center;
   padding: 5rem 4rem 5rem 5rem;
 }
+.diff-cta { margin-top: 2.5rem; align-self: flex-start; }
 .diff-intro {
   font-size: 1.5rem;
   color: var(--ink);
@@ -785,6 +792,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   max-width: 600px;
   margin-bottom: 4rem;
 }
+.hiw-head-text { max-width: 600px; }
 .hiw-head .section-h2 {
   font-size: 4rem;
   font-weight: 500;
@@ -1000,6 +1008,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   letter-spacing: 0.12em;
   margin-bottom: 1.25rem;
 }
+.app-head-text { max-width: 640px; }
 .app-head .section-h2 {
   font-size: 4rem;
   font-weight: 500;
@@ -1296,6 +1305,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   letter-spacing: 0.12em;
   margin-bottom: 1.25rem;
 }
+.yield-header-text { max-width: 700px; }
 .yield-header .section-h2 {
   font-size: 4rem;
   font-weight: 500;
@@ -2222,28 +2232,57 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .survey-steps-wrap {
   flex: 1;
+  position: relative;
 }
 
 /* Steps */
 .survey-step {
-  display: none;
+  position: absolute;
+  inset: 0;
+  display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  animation: surveyIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
-.survey-step.active { display: flex; }
+.survey-step.active {
+  opacity: 1;
+  pointer-events: auto;
+}
 .survey-step.exiting {
-  display: flex;
-  animation: surveyOut 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
+  opacity: 0;
   pointer-events: none;
 }
-@keyframes surveyIn {
-  from { opacity: 0; transform: translateX(28px); }
-  to   { opacity: 1; transform: translateX(0); }
+
+/* Skeleton loading */
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to   { background-position:  200% 0; }
 }
-@keyframes surveyOut {
-  from { opacity: 1; transform: translateX(0); }
-  to   { opacity: 0; transform: translateX(-20px); }
+.survey-step.loading .survey-option {
+  background: linear-gradient(90deg, #f0f0eb 25%, #e6e6e0 50%, #f0f0eb 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.1s ease infinite;
+  border-color: transparent;
+  pointer-events: none;
+}
+.survey-step.loading .survey-option span { opacity: 0; }
+.survey-step.loading .survey-text-input,
+.survey-step.loading textarea,
+.survey-step.loading .survey-contact-fields input {
+  background: linear-gradient(90deg, #f0f0eb 25%, #e6e6e0 50%, #f0f0eb 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.1s ease infinite;
+  color: transparent;
+  border-color: transparent;
+  pointer-events: none;
+}
+.survey-step.loading .survey-option,
+.survey-step.loading .survey-text-input,
+.survey-step.loading textarea,
+.survey-step.loading .survey-contact-fields input {
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
 }
 
 .survey-q {

@@ -2298,7 +2298,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-size: 0.875rem;
   color: var(--mid);
   line-height: 1.5;
-  margin-top: -1.75rem;
+  margin-top: -1.25rem;
   margin-bottom: 2rem;
 }
 

@@ -14,6 +14,7 @@
   --warm-white:  #f8f8f1;  /* Casa: base bg */
   --mid:         #8e8f84;  /* Casa: secondary/muted text */
   --line:        #ebebe4;  /* Casa: hairline borders */
+  --input-border: #deded7; /* input fields — slightly stronger */
   --gold:        #b8942a;
   --gold-light:  #d4b060;
   --mint:        #7ef0a8;
@@ -148,7 +149,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ----- Inputs ----- */
 .input-pill {
   border-radius: var(--radius-pill);
-  border: 1px solid var(--line);
+  border: 1px solid var(--input-border);
   padding: 0.75rem 1.25rem;
   font-family: 'DM Sans', sans-serif;
   font-size: 0.9rem;
@@ -710,6 +711,74 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   flex-direction: column;
 }
+
+/* ----- Comparison panels ----- */
+.diff-compare {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.diff-compare-panel {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.diff-compare-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--line);
+}
+.diff-compare-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.diff-compare-badge {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  padding: 0.3rem 0.75rem;
+}
+.diff-compare-badge--bad {
+  background: rgba(180, 80, 50, 0.1);
+  color: #9b4030;
+}
+.diff-compare-badge--good {
+  background: rgba(40,40,40,0.08);
+  color: var(--ink);
+}
+.diff-compare-list {
+  display: flex;
+  flex-direction: column;
+}
+.diff-compare-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.875rem 1.25rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+.diff-compare-list li:last-child { border-bottom: none; }
+.diff-compare-icon {
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  width: 1.25rem;
+  text-align: center;
+}
+.diff-compare-icon--bad { color: #b84030; }
+.diff-compare-icon--good { color: var(--ink); opacity: 0.5; }
 .diff-row {
   display: grid;
   grid-template-columns: 3rem 1fr 1fr;
@@ -1289,7 +1358,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   overflow: hidden;
 }
 .yield-header {
-  padding: var(--section-pad-desktop) 48px 4rem;
+  padding: var(--section-pad-desktop) 48px 3.5rem;
   width: 820px;
   max-width: 100%;
 }
@@ -1314,6 +1383,57 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .yield-header .section-body {
   font-size: 1.5rem;
 }
+.yield-zip-form {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-top: 3.5rem;
+  max-width: 480px;
+}
+.yield-zip-input {
+  width: 100%;
+  background: #fff;
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius-pill);
+  padding: 0.75rem 8rem 0.75rem 1.5rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  color: var(--ink);
+  outline: none;
+  min-height: 72px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.yield-zip-input::placeholder { color: rgba(40,40,40,0.3); }
+.yield-zip-input:focus {
+  border-color: var(--ink);
+  box-shadow: 0 0 0 3px rgba(40,40,40,0.07);
+}
+.yield-zip-btn {
+  position: absolute;
+  right: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: var(--ink);
+  color: #fff;
+  border-radius: var(--radius-pill);
+  padding: 0.65rem 1.5rem;
+  min-height: 56px;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+.yield-zip-btn:hover { opacity: 0.82; }
+.yield-zip-result {
+  margin-top: 0.75rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  color: var(--mid);
+  max-width: 480px;
+  min-height: 1.2em;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.yield-zip-result.visible { opacity: 1; }
 .yield-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1560,11 +1680,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .tier-card {
   border-radius: 0;
-  padding: 3.5rem 3rem;
+  padding: 3.5rem 3rem 3rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 3.5rem;
+  gap: 3rem;
   min-height: 700px;
 }
 .tier-card--1 { background: #d6ddd0; }
@@ -1574,7 +1693,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .tier-top {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 0;
+}
+.tier-top .tier-badge { margin-bottom: 2rem; }
+.tier-top .tier-heading { margin-bottom: 1rem; }
+.tier-top .tier-heading-sub { margin-bottom: 2rem; }
+.tier-features-wrap {
+  flex: 1;
 }
 .tier-badge {
   display: inline-block;
@@ -1594,68 +1719,73 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: rgba(255,255,255,0.15);
 }
 .tier-heading {
-  margin-bottom: 1rem;
-}
-.tier-price {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 2rem;
-  font-weight: 500;
+  font-family: 'Albert Sans', sans-serif;
+  font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
   color: var(--ink);
-  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+.tier-card--2 .tier-heading { color: #fff; }
+.tier-heading-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: rgba(40,40,40,0.5);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+.tier-card--2 .tier-heading-sub { color: rgba(255,255,255,0.55); }
+.tier-price {
+  font-family: 'Albert Sans', sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: -0.03em;
   line-height: 1;
 }
 .tier-card--2 .tier-price { color: #fff; }
 .tier-price-unit {
-  font-size: 1em;
+  font-size: 0.6em;
   font-weight: 400;
-  letter-spacing: -0.01em;
   opacity: 0.6;
-  vertical-align: baseline;
+  vertical-align: middle;
 }
-.tier-heading {
-  font-family: 'Albert Sans', sans-serif;
-  font-size: clamp(1.5rem, 2.2vw, 2.25rem);
-  font-weight: 400;
-  line-height: 1.35;
-  letter-spacing: -0.03em;
-  color: var(--ink);
-}
-.tier-card--2 .tier-heading { color: rgba(255,255,255,0.8); }
-.tier-heading strong {
-  font-weight: 600;
-  color: var(--ink);
-}
-.tier-card--2 .tier-heading strong { color: #fff; }
-.tier-heading-sub {
-  color: rgba(40,40,40,0.4);
-}
-.tier-card--2 .tier-heading-sub { color: rgba(255,255,255,0.4); }
 
 .tier-cta-btn {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--ink);
-  color: #fff;
-  border-radius: 9999px;
-  padding: 0.85rem 2rem;
+  width: 100%;
+  margin-top: 4rem;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  padding: 1.1rem 2rem;
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  width: fit-content;
-  min-height: 48px;
-  transition: opacity 0.2s;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  min-height: 56px;
+  transition: background 0.2s, color 0.2s;
+  margin-top: auto;
 }
-.tier-cta-btn:hover { opacity: 0.8; }
+.tier-cta-btn:hover { background: var(--ink); color: #fff; }
 .tier-card--2 .tier-cta-btn {
   background: #fff;
   color: var(--ink);
+  border-color: #fff;
 }
+.tier-card--2 .tier-cta-btn:hover { background: rgba(255,255,255,0.88); }
 
 .tier-features-wrap {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  flex: 1;
 }
 .tier-features-label {
   font-size: 0.875rem;
@@ -1778,7 +1908,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .form-input {
   background: #fff;
-  border: 1px solid var(--line);
+  border: 1px solid var(--input-border);
   border-radius: var(--radius-pill);
   padding: 0.75rem 1.5rem;
   font-family: 'DM Sans', sans-serif;

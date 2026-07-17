@@ -212,6 +212,99 @@ function initMidCta() {
   update();
 }
 
+/* ----- Yield ZIP ----- */
+const YIELD_DATA = {
+  austin: {
+    label: 'Austin, TX',
+    stats: ['10–20', '600+', '52', '1–2'],
+    note: 'Year-round growing climate with 300+ sun days. Optimal conditions for continuous production.'
+  },
+  houston: {
+    label: 'Houston, TX',
+    stats: ['8–16', '520+', '48', '1–2'],
+    note: 'Humid subtropical climate with long growing seasons. High productivity with proper drainage.'
+  },
+  default: {
+    label: 'your area',
+    stats: ['6–14', '420+', '40', '1–3'],
+    note: 'Estimates based on a temperate US climate. Your local conditions may increase these numbers.'
+  }
+};
+
+function getYieldProfile(zip) {
+  if (!ZIP_PATTERN.test(zip)) return null;
+  if (/^787\d{2}$|^786\d{2}$|^785\d{2}$/.test(zip)) return 'austin';
+  if (/^770\d{2}$|^771\d{2}$|^772\d{2}$/.test(zip)) return 'houston';
+  return 'default';
+}
+
+function countUp(el, target, suffix, duration) {
+  const start = performance.now();
+  const from = 0;
+  function tick(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    // ease out cubic
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const value = Math.round(from + (target - from) * eased);
+    el.textContent = value + suffix;
+    if (progress < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+function parseStatValue(str) {
+  // e.g. "10–20" → { value: 20, prefix: '10–', suffix: '' }
+  // e.g. "600+" → { value: 600, prefix: '', suffix: '+' }
+  // e.g. "52"   → { value: 52,  prefix: '', suffix: '' }
+  // e.g. "1–2"  → { value: 2,   prefix: '1–', suffix: '' }
+  const rangMatch = str.match(/^(\d+)[–-](\d+)(.*)$/);
+  if (rangMatch) return { value: parseInt(rangMatch[2]), prefix: rangMatch[1] + '–', suffix: rangMatch[3] };
+  const simpleMatch = str.match(/^(\d+)(\D*)$/);
+  if (simpleMatch) return { value: parseInt(simpleMatch[1]), prefix: '', suffix: simpleMatch[2] };
+  return null;
+}
+
+function applyYieldStats(profileKey) {
+  const profile = YIELD_DATA[profileKey];
+  const numbers = document.querySelectorAll('.yield-number');
+  const stats = profile.stats;
+  numbers.forEach((el, i) => {
+    if (stats[i] === undefined) return;
+    const parsed = parseStatValue(stats[i]);
+    if (!parsed) { el.textContent = stats[i]; return; }
+    const delay = i * 80;
+    setTimeout(() => {
+      // Wrap prefix in a span so it doesn't animate
+      el.innerHTML = parsed.prefix ? `<span class="yield-num-prefix">${parsed.prefix}</span><span class="yield-num-count"></span><span class="yield-num-suffix">${parsed.suffix}</span>` : `<span class="yield-num-count"></span><span class="yield-num-suffix">${parsed.suffix}</span>`;
+      const countEl = el.querySelector('.yield-num-count');
+      countUp(countEl, parsed.value, '', 900);
+    }, delay);
+  });
+}
+
+function initYieldZip() {
+  const form   = document.getElementById('yield-zip-form');
+  const input  = document.getElementById('yield-zip-input');
+  const result = document.getElementById('yield-zip-result');
+  if (!form || !input || !result) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const zip = input.value.trim();
+    const profileKey = getYieldProfile(zip);
+    if (!profileKey) {
+      result.textContent = 'Enter a valid 5-digit ZIP code.';
+      result.className = 'yield-zip-result';
+      return;
+    }
+    const profile = YIELD_DATA[profileKey];
+    result.innerHTML = `<strong>Showing estimates for ${profile.label}.</strong> ${profile.note}`;
+    result.className = 'yield-zip-result visible';
+    applyYieldStats(profileKey);
+  });
+}
+
 /* ----- Survey Modal ----- */
 function initSurvey() {
   const modal     = document.getElementById('survey-modal');
@@ -380,6 +473,31 @@ function initSurvey() {
   });
 }
 
+/* ----- Yield count-up on scroll ----- */
+function initYieldCountUp() {
+  const numbers = document.querySelectorAll('.yield-number');
+  if (!numbers.length) return;
+  const DEFAULT_STATS = ['10–20', '600+', '52', '1–2'];
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      observer.unobserve(entry.target);
+      const idx = Array.from(numbers).indexOf(entry.target);
+      const stat = DEFAULT_STATS[idx];
+      if (!stat) return;
+      const parsed = parseStatValue(stat);
+      if (!parsed) return;
+      entry.target.innerHTML = parsed.prefix
+        ? `<span class="yield-num-prefix">${parsed.prefix}</span><span class="yield-num-count"></span><span class="yield-num-suffix">${parsed.suffix}</span>`
+        : `<span class="yield-num-count"></span><span class="yield-num-suffix">${parsed.suffix}</span>`;
+      countUp(entry.target.querySelector('.yield-num-count'), parsed.value, '', 900);
+    });
+  }, { threshold: 0.5 });
+
+  numbers.forEach(el => observer.observe(el));
+}
+
 /* ----- Init ----- */
 document.addEventListener('DOMContentLoaded', () => {
   initMarquee();
@@ -390,5 +508,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNav();
   initNavScroll();
   initMidCta();
+  initYieldZip();
+  initYieldCountUp();
   initSurvey();
 });

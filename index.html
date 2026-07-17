@@ -336,6 +336,11 @@
         <span class="eyebrow">Output by the numbers</span>
         <h2 class="section-h2" id="yield-h2">What your backyard actually produces.</h2>
         <p class="section-body">Based on a four-bed system in the Austin/Texas Hill Country climate. Output scales linearly with additional beds.</p>
+        <form class="yield-zip-form" id="yield-zip-form" novalidate>
+          <input type="text" class="yield-zip-input" id="yield-zip-input" inputmode="numeric" maxlength="5" placeholder="Enter your ZIP for local estimates" autocomplete="postal-code" />
+          <button type="submit" class="yield-zip-btn">Check</button>
+        </form>
+        <div class="yield-zip-result" id="yield-zip-result" role="status" aria-live="polite"></div>
       </div>
 
       <div class="yield-grid" data-stagger>
@@ -481,35 +486,33 @@
           <div class="tier-card tier-card--1 fade-up">
             <div class="tier-top">
               <span class="tier-badge">Foundation</span>
-              <h3 class="tier-heading"><strong>The Install.</strong> <span class="tier-heading-sub">A professionally engineered foundation. You manage day-to-day, we handle the build.</span></h3>
+              <h3 class="tier-heading">The Install</h3>
+              <p class="tier-heading-sub">A professionally engineered foundation. You manage day-to-day, we do the heavy lifting upfront.</p>
               <div class="tier-price">From $3,400</div>
-              <a href="#contact" class="tier-cta-btn" data-open-survey>Get started</a>
             </div>
             <div class="tier-features-wrap">
-              <p class="tier-features-label">One-time install, including:</p>
               <ul class="tier-features" role="list">
                 <li>Site analysis &amp; custom layout design</li>
                 <li>4×8 ft modular raised bed construction</li>
-                <li>Biologically active soil blend</li>
+                <li>High-performance biologically active soil blend</li>
                 <li>Full drip irrigation network, zoned</li>
                 <li>Smart watering controller configured</li>
                 <li>Initial seasonal planting</li>
                 <li>Harvest at Home app onboarding</li>
               </ul>
             </div>
-            <p class="tier-footnote">Pricing subject to site conditions and bed count.</p>
+            <a href="#contact" class="tier-cta-btn" data-open-survey>Start here</a>
           </div>
 
           <!-- Tier 2: Managed Garden -->
           <div class="tier-card tier-card--2 fade-up">
             <div class="tier-top">
               <span class="tier-badge">Most Popular</span>
-              <h3 class="tier-heading"><strong>Managed Garden.</strong> <span class="tier-heading-sub">Stable, predictable yield. Your agronomist visits weekly, you just harvest.</span></h3>
+              <h3 class="tier-heading">Managed Garden</h3>
+              <p class="tier-heading-sub">Stable, predictable yield with minimal effort on your end. Your agronomist comes weekly.</p>
               <div class="tier-price">From $280<span class="tier-price-unit">/mo</span></div>
-              <a href="#contact" class="tier-cta-btn" data-open-survey>Get started</a>
             </div>
             <div class="tier-features-wrap">
-              <p class="tier-features-label">Monthly service, including:</p>
               <ul class="tier-features" role="list">
                 <li>Everything in The Install</li>
                 <li>Weekly maintenance visits (1.5 hrs)</li>
@@ -520,30 +523,29 @@
                 <li>Monthly production report in app</li>
               </ul>
             </div>
-            <p class="tier-footnote">Pricing subject to site conditions and bed count.</p>
+            <a href="#contact" class="tier-cta-btn" data-open-survey>Get a design</a>
           </div>
 
           <!-- Tier 3: Fully Controlled -->
           <div class="tier-card tier-card--3 fade-up">
             <div class="tier-top">
               <span class="tier-badge">Full Automation</span>
-              <h3 class="tier-heading"><strong>Fully Controlled.</strong> <span class="tier-heading-sub">Complete closed-loop automation. Sensors run the garden. You only show up to eat.</span></h3>
+              <h3 class="tier-heading">Fully Controlled</h3>
+              <p class="tier-heading-sub">Complete closed-loop system. Sensors manage everything. You only show up to harvest.</p>
               <div class="tier-price">From $480<span class="tier-price-unit">/mo</span></div>
-              <a href="#contact" class="tier-cta-btn" data-open-survey>Get started</a>
             </div>
             <div class="tier-features-wrap">
-              <p class="tier-features-label">Full automation, including:</p>
               <ul class="tier-features" role="list">
                 <li>Everything in Managed Garden</li>
                 <li>Full sensor array (moisture, temp, nutrients)</li>
                 <li>Weather-adaptive irrigation control</li>
                 <li>Remote real-time monitoring dashboard</li>
                 <li>Automated alerts &amp; auto-adjustments</li>
-                <li>Dedicated agronomist on-call</li>
+                <li>Dedicated Harvest at Home agronomist on-call</li>
                 <li>Architectural bed upgrade options</li>
               </ul>
             </div>
-            <p class="tier-footnote">Pricing subject to site conditions and bed count.</p>
+            <a href="#contact" class="tier-cta-btn" data-open-survey>Design my system</a>
           </div>
 
         </div>

@@ -2463,13 +2463,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: var(--cream);
   border: 1.5px solid transparent;
   border-radius: 12px;
-  padding: 1rem 1.25rem;
+  padding: 1.125rem 1.25rem;
   font-family: 'DM Sans', sans-serif;
   font-size: 1rem;
+  line-height: 1.5;
   color: var(--ink);
   outline: none;
   width: 100%;
-  min-height: 56px;
   transition: border-color 0.2s, background 0.2s;
 }
 .survey-text-input:focus { border-color: var(--ink); background: #fff; }

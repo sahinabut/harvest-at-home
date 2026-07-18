@@ -316,7 +316,7 @@ function initSurvey() {
   const navBar    = document.getElementById('survey-nav');
   if (!modal) return;
 
-  const TOTAL_STEPS = 9; // step 10 is success screen
+  const TOTAL_STEPS = 8; // step 9 is success screen
   let current = 1;
 
   function getStep(n) {
@@ -408,8 +408,8 @@ function initSurvey() {
     if (current < TOTAL_STEPS) {
       showStep(current + 1);
     } else if (current === TOTAL_STEPS) {
-      // Submit: show success screen (step 10)
-      showStep(10);
+      // Submit: show success screen (step 9)
+      showStep(9);
     } else {
       // Success screen: close modal
       closeModal();

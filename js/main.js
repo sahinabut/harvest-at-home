@@ -314,6 +314,7 @@ function initSurvey() {
   const progressBar = document.getElementById('survey-progress-bar');
   const stepCount = document.getElementById('survey-step-count');
   const navBar    = document.getElementById('survey-nav');
+  const errorMsg  = document.getElementById('survey-error-msg');
   if (!modal) return;
 
   const TOTAL_STEPS = 8; // step 9 is success screen
@@ -445,8 +446,28 @@ function initSurvey() {
     return valid;
   }
 
+  function showError(msg) {
+    if (!errorMsg) return;
+    errorMsg.textContent = msg;
+    errorMsg.classList.add('visible');
+  }
+
+  function clearError() {
+    if (!errorMsg) return;
+    errorMsg.textContent = '';
+    errorMsg.classList.remove('visible');
+  }
+
   function advanceStep() {
-    if (!validateCurrentStep()) return;
+    if (!validateCurrentStep()) {
+      const step = modal.querySelector(`.survey-step[data-step="${current}"]`);
+      const hasRadio = step?.querySelector('.survey-options');
+      const hasInputs = step?.querySelectorAll('input[required], textarea[required]').length > 0;
+      if (hasRadio) showError('Please select an option to continue.');
+      else if (hasInputs) showError('Please fill in all required fields.');
+      return;
+    }
+    clearError();
 
     if (current < TOTAL_STEPS) {
       showStep(current + 1);
@@ -485,6 +506,7 @@ function initSurvey() {
     const radio = option.querySelector('input[type=radio]');
     if (radio) radio.checked = true;
     step.querySelector('.survey-options')?.classList.remove('survey-options-error');
+    clearError();
 
     // Auto-advance after 320ms
     setTimeout(() => {

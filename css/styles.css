@@ -2503,6 +2503,17 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .survey-optional { font-weight: 300; text-transform: none; letter-spacing: 0; }
 
+.survey-error-msg {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  color: #c0392b;
+  padding: 0 2.5rem 0.5rem;
+  min-height: 1.2em;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.survey-error-msg.visible { opacity: 1; }
+
 /* Navigation */
 .survey-nav {
   display: flex;

@@ -462,9 +462,15 @@ function initSurvey() {
     if (!validateCurrentStep()) {
       const step = modal.querySelector(`.survey-step[data-step="${current}"]`);
       const hasRadio = step?.querySelector('.survey-options');
-      const hasInputs = step?.querySelectorAll('input[required], textarea[required]').length > 0;
-      if (hasRadio) showError('Please select an option to continue.');
-      else if (hasInputs) showError('Please fill in all required fields.');
+      if (hasRadio) {
+        showError('Please select an option to continue.');
+      } else if (current === 1) {
+        const zip = step?.querySelector('#s-zip');
+        if (!zip?.value.trim()) showError('Please enter your ZIP code.');
+        else showError('Please enter a valid 5-digit ZIP code.');
+      } else {
+        showError('Please fill in all required fields.');
+      }
       return;
     }
     clearError();

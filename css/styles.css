@@ -2473,6 +2473,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: border-color 0.2s, background 0.2s;
 }
 .survey-text-input:focus { border-color: var(--ink); background: #fff; }
+.survey-options-error .survey-option { border-color: #c0392b; }
 .survey-text-input.survey-input-error { border-color: #c0392b; background: #fff8f7; }
 .survey-text-input.survey-input-error:focus { border-color: #c0392b; }
 .survey-textarea {

@@ -408,10 +408,22 @@ function initSurvey() {
     const step = modal.querySelector(`.survey-step[data-step="${current}"]`);
     if (!step) return true;
 
-    // Text/email/tel inputs
-    const inputs = step.querySelectorAll('input[required], textarea[required]');
     let valid = true;
-    inputs.forEach(el => {
+
+    // Radio options — check if any selected
+    const radioGroup = step.querySelector('.survey-options');
+    if (radioGroup) {
+      const selected = radioGroup.querySelector('.survey-option.selected');
+      if (!selected) {
+        radioGroup.classList.add('survey-options-error');
+        valid = false;
+      } else {
+        radioGroup.classList.remove('survey-options-error');
+      }
+    }
+
+    // Text/email/tel inputs
+    step.querySelectorAll('input[required], textarea[required]').forEach(el => {
       el.classList.remove('survey-input-error');
       if (!el.value.trim()) {
         el.classList.add('survey-input-error');
@@ -470,6 +482,7 @@ function initSurvey() {
     option.classList.add('selected');
     const radio = option.querySelector('input[type=radio]');
     if (radio) radio.checked = true;
+    step.querySelector('.survey-options')?.classList.remove('survey-options-error');
 
     // Auto-advance after 320ms
     setTimeout(() => {

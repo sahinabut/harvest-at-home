@@ -335,6 +335,7 @@ function initSurvey() {
     const next = getStep(n);
     if (!next) return;
     next.classList.add('active', 'loading');
+    requestAnimationFrame(() => requestAnimationFrame(() => next.style.opacity = '1'));
     setTimeout(() => next.classList.remove('loading'), 400);
     current = n;
 
@@ -387,6 +388,7 @@ function initSurvey() {
     // Hide all steps
     modal.querySelectorAll('.survey-step').forEach(s => {
       s.classList.remove('active', 'exiting-back', 'exiting-fwd');
+      s.style.opacity = '';
     });
     // Clear inputs
     modal.querySelectorAll('input[type=text], input[type=email], input[type=tel], textarea').forEach(el => {

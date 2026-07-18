@@ -2362,14 +2362,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .survey-steps-wrap {
   flex: 1;
-  position: relative;
 }
 
 /* Steps */
 .survey-step {
-  position: absolute;
-  inset: 0;
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 0;
   opacity: 0;
@@ -2377,6 +2374,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: opacity 0.3s ease;
 }
 .survey-step.active {
+  display: flex;
   opacity: 1;
   pointer-events: auto;
 }

@@ -404,7 +404,36 @@ function initSurvey() {
     showStep(1);
   }
 
+  function validateCurrentStep() {
+    const step = modal.querySelector(`.survey-step[data-step="${current}"]`);
+    if (!step) return true;
+
+    // Text/email/tel inputs
+    const inputs = step.querySelectorAll('input[required], textarea[required]');
+    let valid = true;
+    inputs.forEach(el => {
+      el.classList.remove('survey-input-error');
+      if (!el.value.trim()) {
+        el.classList.add('survey-input-error');
+        valid = false;
+      }
+    });
+
+    // ZIP step: validate format
+    if (current === 1) {
+      const zip = step.querySelector('#s-zip');
+      if (zip && !ZIP_PATTERN.test(zip.value.trim())) {
+        zip.classList.add('survey-input-error');
+        valid = false;
+      }
+    }
+
+    return valid;
+  }
+
   function advanceStep() {
+    if (!validateCurrentStep()) return;
+
     if (current < TOTAL_STEPS) {
       showStep(current + 1);
     } else if (current === TOTAL_STEPS) {
@@ -415,6 +444,13 @@ function initSurvey() {
       closeModal();
     }
   }
+
+  // Clear error state on input
+  modal.addEventListener('input', (e) => {
+    if (e.target.classList.contains('survey-text-input')) {
+      e.target.classList.remove('survey-input-error');
+    }
+  });
 
   // Radio option click — select + auto-advance after brief delay
   modal.addEventListener('click', (e) => {

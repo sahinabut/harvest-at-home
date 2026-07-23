@@ -294,8 +294,33 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   height: 2px;
   background: #fff;
   border-radius: 2px;
-  transition: transform 0.2s, opacity 0.2s;
+  transition: transform 0.25s, opacity 0.2s;
 }
+
+/* Hamburger → X when open */
+.nav-hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile menu CTA */
+.nav-mobile-cta-item { display: none; }
+.nav-mobile-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: var(--ink);
+  border-radius: 9999px;
+  padding: 0.85rem 2rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  min-height: 52px;
+  margin-top: 0.5rem;
+}
+.nav-mobile-cta-btn:hover { opacity: 0.88; }
 
 /* =========================================================
    HERO
@@ -2111,6 +2136,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     font-size: 1.2rem;
     letter-spacing: 0.15em;
   }
+  .nav-links.open .nav-mobile-cta-item { display: block; }
+  .nav-hamburger[aria-expanded="true"] span { background: #fff; }
 
   /* Typography */
   .section-h2 { font-size: clamp(1.75rem, 5.5vw, 3rem); letter-spacing: -0.03em; }

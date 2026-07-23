@@ -287,6 +287,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   min-height: 44px;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 101;
 }
 .nav-hamburger span {
   display: block;
@@ -301,28 +303,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .nav-hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav-hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .nav-hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-/* Force white regardless of scroll state */
-.nav-hamburger[aria-expanded="true"] span { background: #fff !important; }
+.nav-hamburger[aria-expanded="true"] span,
+.site-nav.scrolled .nav-hamburger[aria-expanded="true"] span { background: #fff; }
 
-/* Mobile menu CTA */
+/* Mobile menu CTA — hidden by default, shown inside overlay */
 .nav-mobile-cta-item { display: none; }
-.nav-mobile-cta-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
-  color: var(--ink);
-  border-radius: 9999px;
-  padding: 0 1.4rem;
-  height: 48px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.875rem;
-  font-weight: 500;
-  white-space: nowrap;
-  letter-spacing: 0;
-  text-transform: none;
-}
-.nav-mobile-cta-btn:hover { opacity: 0.88; }
 
 /* =========================================================
    HERO
@@ -2138,8 +2123,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     font-size: 1.2rem;
     letter-spacing: 0.15em;
   }
-  .nav-links.open .nav-mobile-cta-item { display: block; text-align: center; }
-  .nav-links.open .nav-mobile-cta-btn { color: var(--ink); }
+  .nav-links.open .nav-mobile-cta-item {
+    display: block;
+    position: absolute;
+    bottom: 3rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
 
   /* Typography */
   .section-h2, .diff-header-h2 { font-size: clamp(2rem, 6vw, 3.5rem); letter-spacing: -0.04em; }

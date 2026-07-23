@@ -301,6 +301,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .nav-hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav-hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .nav-hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+/* Force white regardless of scroll state */
+.nav-hamburger[aria-expanded="true"] span { background: #fff !important; }
 
 /* Mobile menu CTA */
 .nav-mobile-cta-item { display: none; }
@@ -2137,6 +2139,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     letter-spacing: 0.15em;
   }
   .nav-links.open .nav-mobile-cta-item { display: block; text-align: center; }
+  .nav-links.open .nav-mobile-cta-btn { color: var(--ink); }
 
   /* Typography */
   .section-h2, .diff-header-h2 { font-size: clamp(2rem, 6vw, 3.5rem); letter-spacing: -0.04em; }
